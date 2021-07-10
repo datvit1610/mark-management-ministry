@@ -41,10 +41,14 @@
 			{{-- navbar --}}
             @include('layouts.navbar')
             {{-- content --}}
-            @yield('content')
+			<div class="content">
+				<div class="container-fluid">
+					 @yield('content')
+				</div>
+			</div>          
             {{-- footer --}}
             @include('layouts.footer')
-             </div>
+        </div>
              
 	</div>
 </body>

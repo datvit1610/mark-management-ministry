@@ -1,9 +1,6 @@
 @extends('layouts.app')
-
-@section('content')
-    
-    @foreach ($soThich as $i)
+@section('content')		
+	 @foreach ($editProfile as $i)
         <h1>{{$i}}</h1>
     @endforeach
-
 @endsection

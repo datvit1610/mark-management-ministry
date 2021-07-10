@@ -2,7 +2,7 @@
 	    
 			<div class="logo">
 				<a href="http://www.creative-tim.com" class="simple-text logo-mini">
-					CT
+					XĐ
 				</a>
 
 				<a href="http://www.creative-tim.com" class="simple-text logo-normal">
@@ -18,7 +18,7 @@
 
 	                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
 	                        <span>
-								Nguyễn Văn Đạt
+								{{ Session::get('nameMinistry')}}
 		                        <b class="caret"></b>
 							</span>
 	                    </a>
@@ -27,39 +27,34 @@
 	                    <div class="collapse" id="collapseExample">
 	                        <ul class="nav">
 	                            <li>
-									<a href="#profile">
+									<a href="../myProfile">
 										<span class="sidebar-mini">Mp</span>
 										<span class="sidebar-normal">My Profile</span>
 									</a>
 								</li>
 	                            <li>
-									<a href="#edit">
+									<a href="../editProfile">
 										<span class="sidebar-mini">Ep</span>
 										<span class="sidebar-normal">Edit Profile</span>
 									</a>
 								</li>
-	                            {{-- <li>
-									<a href="#settings">
-										<span class="sidebar-mini">S</span>
-										<span class="sidebar-normal">Settings</span>
-									</a>
-								</li> --}}
 	                        </ul>
 	                    </div>
 	                </div>
 	            </div>
 	            <ul class="nav">
-	                <li class="active">
-	                    <a data-toggle="collapse" href="#dashboardOverview" aria-expanded="true">
+	                <li>{{-- class="active" --}}
+	                    <a  href="../mark" >
 	                        <i class="ti-panel"></i>
-	                        <p>Quản lý điểm
-                                <b class="caret"></b>
-                            </p>
+							<span class="sidebar-normal">Quản lý điểm</span>
+	                        {{-- <p>Quản lý điểm
+                                {{-- <b class="caret"></b> 
+                            </p> --}}
 	                    </a>
-						<div class="collapse in" id="dashboardOverview">
+						{{-- <div class="collapse in" id="dashboardOverview">
 							<ul class="nav">
 								<li class="active">
-									<a href="../favourite">
+									<a href="../overview">
 										<span class="sidebar-mini">O</span>
 										<span class="sidebar-normal">Overview</span>
 									</a>
@@ -71,14 +66,15 @@
 									</a>
 								</li>
 							</ul>
-						</div>
+						</div> --}}
 	                </li>
 					<li>
-						<a data-toggle="collapse" href="#componentsExamples">
+						<a href="{{ route ('major.index')}}">
 							<i class="ti-package"></i>
-							<p>Chuyên ngành
-							   {{-- <b class="caret"></b> --}}
-							</p>
+							<span class="sidebar-normal">Chuyên ngành</span>
+							{{-- <p>Chuyên ngành
+							   {{-- <b class="caret"></b>
+							</p> --}}
 						</a>
 						{{-- <div class="collapse" id="componentsExamples">
 							<ul class="nav">
@@ -128,12 +124,10 @@
 						</div> --}}
 					</li>
 					<li>
-						<a data-toggle="collapse" href="#formsExamples">
+						<a href="../course">
 	                        <i class="ti-clipboard"></i>
-	                        <p>
-								khóa
-	                           {{-- <b class="caret"></b> --}}
-	                        </p>
+							<span class="sidebar-normal">Khóa</span>
+	                       
 	                    </a>
 	                    {{-- <div class="collapse" id="formsExamples">
 							<ul class="nav">
@@ -165,12 +159,9 @@
 	                    </div> --}}
 	                </li>
 	                <li>
-						<a data-toggle="collapse" href="#tablesExamples">
+						<a href="../grade/create">
 	                        <i class="ti-view-list-alt"></i>
-	                        <p>
-								Quản lý lớp
-	                           {{-- <b class="caret"></b> --}}
-	                        </p>
+	                        <span class="sidebar-normal">Quản lý lớp</span>
 	                    </a>
 	                    {{-- <div class="collapse" id="tablesExamples">
 							<ul class="nav">
