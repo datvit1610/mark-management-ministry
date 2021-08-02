@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Grade;
-use Illuminate\Support\Facades\DB;
+use App\Models\Ministry;
 use Illuminate\Support\Facades\Redirect;
 
-class GradeController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,20 +15,12 @@ class GradeController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->get('search');
-        $grades = Grade::where('nameGrade', 'like', "%$search%")->paginate(3);
-        $grade = DB::table('grade')
-            ->join('course', 'grade.idCourse', '=', 'course.idCourse')
-            ->join('major', 'grade.idMajor', '=', 'major.idMajor')
-            ->select(
-                'grade.*',
-                'course.nameCourse',
-                'major.nameMajor'
-            )->get();
-        return view('grade.index', [
-            "grade" => $grades,
-            "grades" => $grade,
-            "search" => $search
+        $idMinistry = $request->session()->get('id');
+
+        $ministry = Ministry::where('idMinistry', '=', $idMinistry)->first();
+
+        return view('ministry.index', [
+            "ministry" => $ministry
         ]);
     }
 
@@ -40,7 +31,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        return view("grade.create");
+        //
     }
 
     /**
@@ -52,10 +43,16 @@ class GradeController extends Controller
     public function store(Request $request)
     {
         $name = $request->get('name');
-        $grade = new Grade();
-        $grade->nameGrade = $name;
-        $grade->save();
-        return Redirect::route('grade.index');
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $phone = $request->get('phone');
+        $ministry = new Ministry();
+        $ministry->nameMinistry = $name;
+        $ministry->email = $email;
+        $ministry->passWord = $password;
+        $ministry->phone = $phone;
+        $ministry->save();
+        return Redirect::route('ministry.index');
     }
 
     /**
@@ -66,8 +63,7 @@ class GradeController extends Controller
      */
     public function show($id)
     {
-        $grade = Grade::find($id);
-        return $grade;
+        //
     }
 
     /**
@@ -78,9 +74,9 @@ class GradeController extends Controller
      */
     public function edit($id)
     {
-        $grade = Grade::find($id);
-        return view('grade.edit', [
-            "grade" => $grade
+        $ministry = Ministry::find($id);
+        return view('ministry.edit', [
+            "ministry" => $ministry
         ]);
     }
 
@@ -93,10 +89,13 @@ class GradeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $grade = Grade::find($id);
-        $grade->nameGrade = $request->get('name');
-        $grade->save();
-        return Redirect::route('grade.index');
+        $ministry = Ministry::find($id);
+        $ministry->nameMinistry = $request->get('name');
+        $ministry->email = $request->get('email');
+        $ministry->passWord = $request->get('password');
+        $ministry->phone = $request->get('phone');
+        $ministry->save();
+        return Redirect::route('ministry.index');
     }
 
     /**
@@ -107,7 +106,6 @@ class GradeController extends Controller
      */
     public function destroy($id)
     {
-        Grade::find($id)->delete();
-        return Redirect::route('grade.index');
+        //
     }
 }

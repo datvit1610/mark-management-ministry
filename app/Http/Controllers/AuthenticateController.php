@@ -24,7 +24,7 @@ class AuthenticateController extends Controller
             $ministry = Ministry::where('email', $email)->where('password', $password)->firstOrFail();
             $request->session()->put('id', $ministry->idMinistry);
             $request->session()->put('nameMinistry', $ministry->nameMinistry);
-            return Redirect::route("major.index");
+            return Redirect::route("course.index");
         } catch (Exception $e) {
             return Redirect::route("login")->with('error', [
                 "message" => 'Sai Email hooặc mật khẩu !',

@@ -9,7 +9,9 @@ class Grade extends Model
 {
     use HasFactory;
 
-    protected $table = "grade";
+    protected $table = 'grade';
 
     public $timestamps = false;
+
+    public $primaryKey = 'idGrade';
 }

@@ -17,7 +17,7 @@
 	            <table class="table table-striped">
 	                <thead>
 	                    <th>Mã</th>
-	                    <th>tên</th>
+	                    <th>Khóa</th>
 						<th>Xem</th>
 						<th>Sửa</th>
 						<th>Xóa</th>
@@ -27,7 +27,7 @@
                             <tr>
                                 <td>{{$course->idCourse}}</td> 
                                 <td>{{$course->nameCourse}}</td> 
-								<td><a class="btn btn-facebook" href="{{ route('course.show',$course->idCourse) }}">Xem</a></td>
+								<td><a class="btn btn-facebook" href="{{ route('major.index') }}">Xem</a></td>
 								<td><a class="btn btn-warning" href="{{ route('course.edit',$course->idCourse) }}">Sửa</a></td>
 								<td>
 									<form action="{{ route('course.destroy',$course->idCourse) }}" method="post">

@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ministry;
 
 class MyProfile extends Controller
 {
-    public function myProfile()
+    public function myProfile(Request $request)
     {
-        return view("myProfile", [
-            "myProfile" => ["Đây là trang profile !!!"]
+        $idMinistry = $request->session()->get('id');
+
+        $ministry = Ministry::where('idMinistry', '=', $idMinistry)->first();
+
+        return view('profile.myProfile', [
+            "ministry" => $ministry
+        ]);
+    }
+    public function edit($id)
+    {
+        $editprofile = Ministry::find($id);
+        return view('profile.editProfile', [
+            "editprofile" => $editprofile
         ]);
     }
 }

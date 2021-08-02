@@ -5,7 +5,7 @@
 					XĐ
 				</a>
 
-				<a href="http://www.creative-tim.com" class="simple-text logo-normal">
+				<a href="../mark"  class="simple-text logo-normal">
 					Xem điểm 
 				</a>
 			</div>
@@ -13,18 +13,17 @@
 				<div class="user">
 	                <div class="info">
 						<div class="photo">
-		                    <img src="{{ asset ('assets') }}/img/faces/face-2.jpg" />
+		                    {{ Session::get('avata') }}
 		                </div>
 
-	                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+	                    <a href="{{ route('ministry.index') }}">
 	                        <span>
-								{{ Session::get('nameMinistry')}}
-		                        <b class="caret"></b>
+							<h6> {{ Session::get('nameMinistry') }} </h6>
 							</span>
 	                    </a>
 						<div class="clearfix"></div>
 
-	                    <div class="collapse" id="collapseExample">
+	                    {{-- <div class="collapse" id="collapseExample">
 	                        <ul class="nav">
 	                            <li>
 									<a href="../myProfile">
@@ -39,34 +38,44 @@
 									</a>
 								</li>
 	                        </ul>
-	                    </div>
+	                    </div> --}}
 	                </div>
 	            </div>
 	            <ul class="nav">
-	                <li>{{-- class="active" --}}
-	                    <a  href="../mark" >
-	                        <i class="ti-panel"></i>
-							<span class="sidebar-normal">Quản lý điểm</span>
-	                        {{-- <p>Quản lý điểm
-                                {{-- <b class="caret"></b> 
-                            </p> --}}
+					<li>
+						<a href="{{ route ('course.index')}}">
+	                        <i class="ti-clipboard"></i>
+							<span class="sidebar-normal">Khóa</span>
+	                       
 	                    </a>
-						{{-- <div class="collapse in" id="dashboardOverview">
+	                    {{-- <div class="collapse" id="formsExamples">
 							<ul class="nav">
-								<li class="active">
-									<a href="../overview">
-										<span class="sidebar-mini">O</span>
-										<span class="sidebar-normal">Overview</span>
+								<li>
+									<a href="../forms/regular.html">
+										<span class="sidebar-mini">Rf</span>
+										<span class="sidebar-normal">Regular Forms</span>
 									</a>
 								</li>
 								<li>
-									<a href="../dashboard/stats.html">
-										<span class="sidebar-mini">S</span>
-										<span class="sidebar-normal">Stats</span>
+									<a href="../forms/extended.html">
+										<span class="sidebar-mini">Ef</span>
+										<span class="sidebar-normal">Extended Forms</span>
 									</a>
 								</li>
-							</ul>
-						</div> --}}
+								<li>
+									<a href="../forms/validation.html">
+										<span class="sidebar-mini">Vf</span>
+										<span class="sidebar-normal">Validation Forms</span>
+									</a>
+								</li>
+	                            <li>
+									<a href="../forms/wizard.html">
+										<span class="sidebar-mini">W</span>
+										<span class="sidebar-normal">Wizard</span>
+									</a>
+								</li>
+	                        </ul>
+	                    </div> --}}
 	                </li>
 					<li>
 						<a href="{{ route ('major.index')}}">
@@ -123,43 +132,9 @@
 	                        </ul>
 						</div> --}}
 					</li>
-					<li>
-						<a href="../course">
-	                        <i class="ti-clipboard"></i>
-							<span class="sidebar-normal">Khóa</span>
-	                       
-	                    </a>
-	                    {{-- <div class="collapse" id="formsExamples">
-							<ul class="nav">
-								<li>
-									<a href="../forms/regular.html">
-										<span class="sidebar-mini">Rf</span>
-										<span class="sidebar-normal">Regular Forms</span>
-									</a>
-								</li>
-								<li>
-									<a href="../forms/extended.html">
-										<span class="sidebar-mini">Ef</span>
-										<span class="sidebar-normal">Extended Forms</span>
-									</a>
-								</li>
-								<li>
-									<a href="../forms/validation.html">
-										<span class="sidebar-mini">Vf</span>
-										<span class="sidebar-normal">Validation Forms</span>
-									</a>
-								</li>
-	                            <li>
-									<a href="../forms/wizard.html">
-										<span class="sidebar-mini">W</span>
-										<span class="sidebar-normal">Wizard</span>
-									</a>
-								</li>
-	                        </ul>
-	                    </div> --}}
-	                </li>
+					
 	                <li>
-						<a href="../grade/create">
+						<a href="../grade">
 	                        <i class="ti-view-list-alt"></i>
 	                        <span class="sidebar-normal">Quản lý lớp</span>
 	                    </a>
