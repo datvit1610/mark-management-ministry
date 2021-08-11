@@ -93,7 +93,7 @@ class MajorController extends Controller
         $major->save();
         return Redirect::route('major.index');
     }
-
+    //sấccasc mới nhá
     /**
      * Remove the specified resource from storage.
      *
