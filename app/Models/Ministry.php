@@ -11,7 +11,7 @@ class Ministry extends Model
 
     protected $table = "ministry";
 
-    public $timestemps = false;
+    public $timestamps = false;
 
     public $primaryKey = "idMinistry";
 }
