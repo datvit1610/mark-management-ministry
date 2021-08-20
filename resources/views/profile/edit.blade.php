@@ -5,7 +5,7 @@
 	                                <h4 class="card-title">Chỉnh sửa thông tin cá nhân </h4>
 	                            </div>
 	                            <div class="card-content">
-	                                <form method="post" action="{{ route('ministry.update', $ministry->idMinistry) }}">
+	                                <form method="post" action="{{ route('profile.update', $profile->idMinistry) }}">
 										@method("PUT")
            								@csrf 
 	                                    <fieldset>
@@ -13,7 +13,7 @@
 	                                            <label class="col-sm-2 control-label">Tên giáo vụ</label>
 	                                            <div class="col-sm-10">
 	                                                <input type="text" name="name" class="form-control" 
-													value="{{ $ministry->nameMinistry}}" >
+													value="{{ $profile->nameMinistry}}" >
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>
@@ -23,7 +23,7 @@
 	                                            <label class="col-sm-2 control-label">Email</label>
 	                                            <div class="col-sm-10">
 	                                                <input type="text" name="email" class="form-control" 
-													value="{{ $ministry->email }}" >
+													value="{{ $profile->email }}" >
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>
@@ -32,7 +32,7 @@
 	                                        <div class="form-group">
 	                                            <label class="col-sm-2 control-label">Password</label>
 	                                            <div class="col-sm-10">
-	                                                <input type="text" name="password" class="form-control" value="{{ $ministry->passWord }}" >
+	                                                <input type="text" name="password" class="form-control" value="{{ $profile->passWord }}" >
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>
@@ -41,7 +41,7 @@
 	                                        <div class="form-group">
 	                                            <label class="col-sm-2 control-label">Số điện thoại</label>
 	                                            <div class="col-sm-10">
-	                                                <input type="text" name="phone"  class="form-control" value="{{ $ministry->phone }}" >
+	                                                <input type="text" name="phone"  class="form-control" value="{{ $profile->phone }}" >
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>

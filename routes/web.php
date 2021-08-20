@@ -3,10 +3,10 @@
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GradeController;
-use App\Http\Controllers\Mark;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\MinistryCotroller;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Student;
+use App\Http\Controllers\StudentController;
 use App\Http\Middleware\CheckLogged;
 use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +23,7 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::get("/", function () {
         return view('login');
     });
+    Route::resource('ministry', MinistryCotroller::class);
     //ngành
     Route::resource('major', MajorController::class);
     //Khóa
@@ -30,11 +31,14 @@ Route::middleware([CheckLogin::class])->group(function () {
     //Lớp
     Route::resource('grade', GradeController::class);
     //profile
-    Route::resource('ministry', ProfileController::class);
+    Route::resource('profile', ProfileController::class);
+    //Sinh viên
+    Route::resource('student', StudentController::class);
+    Route::name('student.')->group(function () {
+        Route::get('/add-by-excel', [StudentController::class, 'addByExcel'])->name('add-by-excel');
+        Route::post('/add-by-excel-process', [StudentController::class, 'import'])->name('add-by-excel-process');
+    });
 });
 //
 Route::get('/mark', [Mark::class, 'mark'])->name('mark');
 //
-Route::get('/student', [Student::class, 'student']);
-// route::get('/myProfile', [MyProfile::class, 'myProfile'])->name('myProfile');
-// Route::get('/editProfile', [EditProfile::class, 'editProfile'])->name('editProfile');

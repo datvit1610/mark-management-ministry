@@ -17,7 +17,6 @@ class MajorController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        //$majors = Major::orderBy('idMajor', 'asc');
         $majors = Major::where('nameMajor', 'like', "%$search%")->paginate(3);
         return view('major.index', [
             "majors" => $majors,
@@ -62,7 +61,9 @@ class MajorController extends Controller
     {
         //$major = Major::where('idMajor', '=', $id)->first();
         $major = Major::find($id);
-        return $major;
+        return view('grade.index', [
+            "major" => $major
+        ]);
     }
 
     /**

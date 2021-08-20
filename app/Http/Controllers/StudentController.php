@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\StudentImport;
 
 class StudentController extends Controller
 {
@@ -11,9 +17,17 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $grades = Grade::all();
+        $grade = $request->get('grade');
+        $students = Student::where('idGrade', $grade)->get();
+        // dd($students);
+        return view('student.index', [
+            'grades' => $grades,
+            'students' => $students,
+            'idGrade' => $grade
+        ]);
     }
 
     /**
@@ -23,7 +37,15 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $student = DB::table('student')
+            ->join('grade', 'student.idGrade', '=', 'grade.idGrade')
+            ->select(
+                'student.*',
+                'grade.nameGrade'
+            )->get();
+        return view("student.create", [
+            "student" => $student
+        ]);
     }
 
     /**
@@ -34,7 +56,26 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lastName = $request->get('lastName');
+        $firstName = $request->get('firstName');
+        $email = $request->get('email');
+        $passWord = $request->get('passWord');
+        $DoB = $request->get('DoB');
+        $gender = $request->get('gender');
+        $phone = $request->get('phone');
+        $idGrade = $request->get('idGrade');
+
+        $student = new Student();
+        $student->lastName = $lastName;
+        $student->firstName = $firstName;
+        $student->email = $email;
+        $student->passWord = $passWord;
+        $student->DoB = $DoB;
+        $student->gender = $gender;
+        $student->phone = $phone;
+        $student->idGrade = $idGrade;
+        $student->save();
+        return Redirect::route('student.index');
     }
 
     /**
@@ -79,6 +120,21 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::find($id)->delete();
+        return Redirect::route('student.index');
+    }
+
+    public function addByExcel()
+    {
+        return view('student.add-by-excel');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('excel-file');
+
+        Excel::import(new StudentImport, $file);
+
+        return Redirect::route('student.index');
     }
 }

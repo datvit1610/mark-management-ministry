@@ -11,7 +11,7 @@
 	                                            <label class="col-sm-2 control-label">Tên giáo vụ</label>
 	                                            <div class="col-sm-10">
 	                                                <input type="text" name="name" class="form-control" 
-													value="{{ $ministry->nameMinistry}}" readonly>
+													value="{{ $profile->nameMinistry}}" readonly>
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>
@@ -21,7 +21,7 @@
 	                                            <label class="col-sm-2 control-label">Email</label>
 	                                            <div class="col-sm-10">
 	                                                <input type="text" name="email" class="form-control" 
-													value="{{ $ministry->email }}" readonly>
+													value="{{ $profile->email }}" readonly>
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>
@@ -30,7 +30,7 @@
 	                                        <div class="form-group">
 	                                            <label class="col-sm-2 control-label">Password</label>
 	                                            <div class="col-sm-10">
-	                                                <input type="password" name="password" class="form-control" value="{{ $ministry->passWord }}" readonly>
+	                                                <input type="password" name="password" class="form-control" value="{{ $profile->passWord }}" readonly>
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>
@@ -39,11 +39,11 @@
 	                                        <div class="form-group">
 	                                            <label class="col-sm-2 control-label">Số điện thoại</label>
 	                                            <div class="col-sm-10">
-	                                                <input type="text" name="phone" disabled="" class="form-control" value="{{ $ministry->phone }}" readonly>
+	                                                <input type="text" name="phone" disabled="" class="form-control" value="{{ $profile->phone }}" readonly>
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>
-										<a class="btn btn-info btn-fill btn-wd" href="{{ route('ministry.edit',$ministry->idMinistry) }}">Cập nhật</a>
+										<a class="btn btn-info btn-fill btn-wd" href="{{ route('profile.edit',$profile->idMinistry) }}">Cập nhật</a>
 	                                </form>
 	                            </div>
 	                        </div>

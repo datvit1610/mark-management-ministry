@@ -24,15 +24,15 @@
 						<th>Xóa</th>
 	                </thead>
 	                <tbody>
-	                    @foreach ($grades as $grade)
+	                    @foreach ($grade as $grades)
                             <tr>
-                                <td>{{$grade->idGrade}}</td> 
-                                <td>{{$grade->nameGrade}}</td>
-								<td>k{{$grade->nameCourse}}</td>
-								<td>{{$grade->nameMajor}}</td>
-								<td><a class="btn btn-facebook" href="{{ route('grade.show',$grade->idGrade) }}">Xem</a></td>
+                                <td>{{$grades->idGrade}}</td> 
+                                <td>{{$grades->nameGrade}}</td>
+								<td>k{{$grades->nameCourse}}</td>
+								<td>{{$grades->nameMajor}}</td>
+								<td><a class="btn btn-facebook" href="{{ route('grade.show',$grades->idGrade) }}">Xem</a></td>
 								<td>
-									<form action="{{ route('grade.destroy',$grade->idGrade) }}" method="post">
+									<form action="{{ route('grade.destroy',$grades->idGrade) }}" method="post">
 										@method('DELETE')
 										@csrf
 										<button class="btn btn-danger">Xoá</button>
@@ -43,9 +43,8 @@
 	                </tbody>
 	            </table>
 				<div class="text-center">
-					{{-- {{ $grade->appends(['search' => $search])->links() }} --}}
+					{{ $grade->appends(['search' => $search])->links() }}
 				</div>
 	        </div>
-	    </div>
-    
+	    </div> 
 @endsection

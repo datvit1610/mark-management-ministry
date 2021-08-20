@@ -17,7 +17,8 @@ class GradeController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $grades = Grade::where('nameGrade', 'like', "%$search%")->paginate(3);
+        // $grades = Grade::where('nameGrade', 'like', "%$search%");
+        // DB::enableQueryLog();
         $grade = DB::table('grade')
             ->join('course', 'grade.idCourse', '=', 'course.idCourse')
             ->join('major', 'grade.idMajor', '=', 'major.idMajor')
@@ -25,10 +26,13 @@ class GradeController extends Controller
                 'grade.*',
                 'course.nameCourse',
                 'major.nameMajor'
-            )->get();
+            )
+            ->where('grade.nameGrade', 'like', "%$search%")
+            ->paginate(3);
+        // dd(DB::getQueryLog());
         return view('grade.index', [
-            "grade" => $grades,
-            "grades" => $grade,
+            // "grades" => $grades,
+            "grade" => $grade,
             "search" => $search
         ]);
     }
@@ -40,7 +44,17 @@ class GradeController extends Controller
      */
     public function create()
     {
-        return view("grade.create");
+        $grades = DB::table('grade')
+            ->join('course', 'grade.idCourse', '=', 'course.idCourse')
+            ->join('major', 'grade.idMajor', '=', 'major.idMajor')
+            ->select(
+                'grade.*',
+                'course.nameCourse',
+                'major.nameMajor'
+            )->get();
+        return view("grade.create", [
+            "grades" => $grades
+        ]);
     }
 
     /**
@@ -51,9 +65,13 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->get('name');
+        $nameGrade = $request->get('nameGrade');
+        $idCourse = $request->get('idCourse');
+        $idMajor = $request->get('idMajor');
         $grade = new Grade();
-        $grade->nameGrade = $name;
+        $grade->nameGrade = $nameGrade;
+        $grade->idCourse = $idCourse;
+        $grade->idMajor = $idMajor;
         $grade->save();
         return Redirect::route('grade.index');
     }
