@@ -58,12 +58,12 @@
                     </div>                   
                 </div>
 
-                <div class="card-content">
+                {{-- <div class="card-content">
                     <div class="form-group">
                         <label>Số điện thoại :</label>	 
                         <input type="text" name="phone" class="form-control datetimepicker" placeholder="Nhập số điện thoại"/>
                     </div>                   
-                </div>
+                </div> --}}
 
                 <div class="card-content">
                     <label>Chọn Lớp:</label>

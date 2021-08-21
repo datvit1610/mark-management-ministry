@@ -11,17 +11,16 @@
 			</div>
 	    	<div class="sidebar-wrapper">
 				<div class="user">
+					<div class="photo">
+	                    <img src="../../assets/img/faces/face-0.jpg" />
+	                </div>
 	                <div class="info">
-						{{-- <div class="photo">
-		                    {{ Session::get('avata') }}
-		                </div> --}}
-
 	                    <a href="{{ route('profile.index') }}">
 	                        <span>
-							<h4 > {{ Session::get('nameMinistry') }} </h4>
+							{{ Session::get('nameMinistry') }}
 							</span>
 	                    </a>
-						<div class="clearfix"></div>
+						{{-- <div class="clearfix"></div> --}}
 	                </div>
 	            </div>
 	            <ul class="nav">

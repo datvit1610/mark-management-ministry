@@ -39,22 +39,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../dashboard/overview.html">Paper Dashboard PRO</a>
             </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                       <a href="register.html">
-                            Register
-                        </a>
-                    </li>
-					<li>
-                       <a href="../dashboard/overview.html">
-                            Dashboard
-                        </a>
-                    </li>
-                </ul>
-            </div>
+           
         </div>
     </nav>
 
@@ -95,9 +81,6 @@
                                             </div>
                                         @endif
                                         <button type="submit" class="btn btn-fill btn-wd ">Đăng nhập</button>
-                                        {{-- <div class="forgot">
-                                            <a href="#pablo">Forgot your password?</a>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </form>
@@ -106,13 +89,7 @@
                 </div>
             </div>
 
-        	<footer class="footer footer-transparent">
-                <div class="container">
-                    <div class="copyright">
-                        &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                    </div>
-                </div>
-            </footer>
+        	
         </div>
     </div>
 </body>

@@ -25,7 +25,6 @@
                     </select>
                 </div>
                 
-
                 <div class="col-sm-6">
                     <label>Chọn Ngành:</label>
                     <select class="selectpicker" data-style="btn btn-danger btn-block" title="Ngành" data-size="7" name="idMajor">

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ministry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class MinistryCotroller extends Controller
 {
@@ -11,9 +13,14 @@ class MinistryCotroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->get('search');
+        $ministrys = Ministry::where('nameMinistry', 'like', "%$search%")->paginate(3);
+        return view('ministry.index', [
+            "ministrys" => $ministrys,
+            "search" => $search,
+        ]);
     }
 
     /**
@@ -23,7 +30,7 @@ class MinistryCotroller extends Controller
      */
     public function create()
     {
-        //
+        return view('ministry.create');
     }
 
     /**
@@ -34,7 +41,19 @@ class MinistryCotroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->get('name');
+        $email = $request->get('email');
+        $passWord = $request->get('passWord');
+        $phone = $request->get('phone');
+        $role = $request->get('role');
+        $ministry = new Ministry();
+        $ministry->nameMinistry = $name;
+        $ministry->email = $email;
+        $ministry->passWord = $passWord;
+        $ministry->phone = $phone;
+        $ministry->role = $role;
+        $ministry->save();
+        return Redirect::route('ministry.index');
     }
 
     /**
@@ -45,7 +64,6 @@ class MinistryCotroller extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -56,7 +74,10 @@ class MinistryCotroller extends Controller
      */
     public function edit($id)
     {
-        //
+        $ministry = Ministry::find($id);
+        return view('ministry.edit', [
+            "ministry" => $ministry
+        ]);
     }
 
     /**
@@ -68,7 +89,14 @@ class MinistryCotroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ministry = Ministry::find($id);
+        $ministry->nameMinistry = $request->get('name');
+        $ministry->email = $request->get('email');
+        $ministry->passWord = $request->get('passWord');
+        $ministry->phone = $request->get('phone');
+        $ministry->role = $request->get('role');
+        $ministry->save();
+        return Redirect::route('ministry.index');
     }
 
     /**

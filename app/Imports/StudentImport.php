@@ -24,7 +24,6 @@ class StudentImport implements ToModel, WithHeadingRow
             "passWord" => $row["mat_khau"],
             "DoB" => gmdate("Y-m-d", $UNIX_DATE),
             "gender" => ($row["gioi_tinh"] == 'nam') ? 1 : 0,
-            "phone" => $row["so_dien_thoai"],
             "idGrade"  => Grade::where('nameGrade', $row["lop"])->value('idGrade'),
         ];
         return new Student($data);

@@ -32,7 +32,7 @@
 	                                        <div class="form-group">
 	                                            <label class="col-sm-2 control-label">Password</label>
 	                                            <div class="col-sm-10">
-	                                                <input type="text" name="password" class="form-control" value="{{ $profile->passWord }}" >
+	                                                <input type="password" name="password" class="form-control" value="{{ $profile->passWord }}" >
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>

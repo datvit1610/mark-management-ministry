@@ -62,7 +62,6 @@ class StudentController extends Controller
         $passWord = $request->get('passWord');
         $DoB = $request->get('DoB');
         $gender = $request->get('gender');
-        $phone = $request->get('phone');
         $idGrade = $request->get('idGrade');
 
         $student = new Student();
@@ -72,7 +71,6 @@ class StudentController extends Controller
         $student->passWord = $passWord;
         $student->DoB = $DoB;
         $student->gender = $gender;
-        $student->phone = $phone;
         $student->idGrade = $idGrade;
         $student->save();
         return Redirect::route('student.index');
@@ -120,8 +118,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Student::find($id)->delete();
-        return Redirect::route('student.index');
+        // Student::find($id)->delete();
+        // return Redirect::route('student.index');
     }
 
     public function addByExcel()
