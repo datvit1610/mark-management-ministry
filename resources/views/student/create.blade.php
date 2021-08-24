@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="card">
-       
+    <div class="card">      
             <form method="post" action="{{ route('student.store') }}">
                 @csrf 
                 <div class="card-header">

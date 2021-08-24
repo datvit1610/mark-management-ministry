@@ -95,7 +95,17 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        $students = DB::table('student')
+            ->join('grade', 'student.idGrade', '=', 'grade.idGrade')
+            ->select(
+                'student.*',
+                'grade.nameGrade'
+            )->get();
+        return view('student.edit', [
+            "student" => $student,
+            "students" => $students
+        ]);
     }
 
     /**

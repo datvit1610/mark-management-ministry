@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('content')
-	{{-- <div class="text-right">
+	<div class="text-right">
 		<a href="{{ route('student.create') }}" class="btn btn-info btn-fill btn-wd">Thêm sinh viên</a>
 	</div>
-			<br> --}}
+			<br>
     <div class="card">
 	    <div class="card-header">
-	        
-               <form action="">
+
+               <form action="" >
 				   <label for="">Chọn lớp</label>
-				   <select name="grade" id="">
+				   <select name="grade" id="" class="btn btn-fill ti-angle-down">
 					   <option value="">------</option>
 					   @foreach ($grades as $grade)
 						   <option value="{{$grade->idGrade}}"
@@ -21,7 +21,7 @@
 							</option>
 					   @endforeach
 				   </select>
-				   <button>Chọn</button>
+				   <button class="btn btn-xs btn-fill">Chọn</button>
 			   </form>
 			   <div class="text-right">
 				<a href="{{ route('student.add-by-excel') }}" class="btn btn-info btn-fill btn-wd">Thêm sinh viên bằng excel</a>
@@ -43,7 +43,8 @@
 						<th>Email</th>
 						<th>Ngày sinh</th>
 						<th>Giới tính</th>
-						
+						<th>Xem điểm</th>
+						<th>Sửa</th>
 	                </thead>
 	                <tbody>
 	                    @foreach ($students as $student)
@@ -54,8 +55,10 @@
 								<td>{{$student->DoB}}</td> 
                                 <td>{{$student->GenderName}}</td> 
 								 
-								{{-- <td><a class="btn btn-facebook" href="{{ route('major.show',$major->idMajor) }}">Xem</a></td>
-								<td><a class="btn btn-warning" href="{{ route('major.edit',$major->idMajor) }}">Sửa</a></td> --}}
+								<td><a class="btn btn-facebook ti-eye" href="{{ route('student.show',$student->idStudent) }}"></a></td>								
+								<td>
+									<a class="btn btn-warning ti-settings" href="{{ route('student.edit',$student->idStudent) }}"></a>
+								</td>
 								{{-- <td>
 									<form action="{{ route('student.destroy',$student->idStudent) }}" method="post">
 				 						@method('DELETE')

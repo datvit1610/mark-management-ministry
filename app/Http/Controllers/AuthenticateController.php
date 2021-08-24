@@ -20,18 +20,28 @@ class AuthenticateController extends Controller
     {
         $email = $request->get('email');
         $password = $request->get('password');
+
         try {
             $ministry = Ministry::where('email', $email)->where('password', $password)->firstOrFail();
-            $request->session()->put('id', $ministry->idMinistry);
-            $request->session()->put('nameMinistry', $ministry->nameMinistry);
-            return Redirect::route("course.index");
+
+            if ($ministry->block == 1) {
+                return Redirect::route("login")->with('error', [
+                    "message" => 'Nick đã bị khóa !',
+                ]);
+            } else {
+                $request->session()->put('id', $ministry->idMinistry);
+                $request->session()->put('nameMinistry', $ministry->nameMinistry);
+                $request->session()->put('role', $ministry->role);
+                return Redirect::route("course.index");
+            }
         } catch (Exception $e) {
             return Redirect::route("login")->with('error', [
                 "message" => 'Sai Email hooặc mật khẩu !',
                 "email" => $email
+
             ]);
         }
-        //return $ministry;
+        return $request;
     }
 
     public function logout(Request $request)

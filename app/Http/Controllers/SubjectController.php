@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ministry;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class MinistryCotroller extends Controller
+
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +17,13 @@ class MinistryCotroller extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $ministrys = Ministry::where('nameMinistry', 'like', "%$search%")->paginate(3);
-        return view('ministry.index', [
-            "ministrys" => $ministrys,
+        $subjects = Subject::where('nameSubject', 'like', "%$search%")->paginate(3);
+        return view('subject.index', [
+            "subjects" => $subjects,
             "search" => $search,
         ]);
+        //oderBy
+
     }
 
     /**
@@ -30,7 +33,7 @@ class MinistryCotroller extends Controller
      */
     public function create()
     {
-        return view('ministry.create');
+        return view('subject.create');
     }
 
     /**
@@ -41,19 +44,17 @@ class MinistryCotroller extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->get('name');
-        $email = $request->get('email');
-        $passWord = $request->get('passWord');
-        $phone = $request->get('phone');
-        $role = $request->get('role');
-        $ministry = new Ministry();
-        $ministry->nameMinistry = $name;
-        $ministry->email = $email;
-        $ministry->passWord = $passWord;
-        $ministry->phone = $phone;
-        $ministry->role = $role;
-        $ministry->save();
-        return Redirect::route('ministry.index');
+        $nameSubject = $request->get('nameSubject');
+        $final = $request->get('final');
+        $skill = $request->get('skill');
+        $duration = $request->get('duration');
+        $subject = new Subject();
+        $subject->nameSubject = $nameSubject;
+        $subject->final = $final;
+        $subject->skill = $skill;
+        $subject->duration = $duration;
+        $subject->save();
+        return Redirect::route('subject.index');
     }
 
     /**
@@ -64,6 +65,10 @@ class MinistryCotroller extends Controller
      */
     public function show($id)
     {
+        $subject = Subject::find($id);
+        return view('subject.edit', [
+            "subject" => $subject
+        ]);
     }
 
     /**
@@ -74,9 +79,9 @@ class MinistryCotroller extends Controller
      */
     public function edit($id)
     {
-        $ministry = Ministry::find($id);
-        return view('ministry.edit', [
-            "ministry" => $ministry
+        $subject = Subject::find($id);
+        return view('subject.edit', [
+            "subject" => $subject
         ]);
     }
 
@@ -89,15 +94,13 @@ class MinistryCotroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ministry = Ministry::find($id);
-        $ministry->nameMinistry = $request->get('name');
-        $ministry->email = $request->get('email');
-        $ministry->passWord = $request->get('passWord');
-        $ministry->phone = $request->get('phone');
-        $ministry->role = $request->get('role');
-        $ministry->block = $request->get('block');
-        $ministry->save();
-        return Redirect::route('ministry.index');
+        $subject = Subject::find($id);
+        $subject->nameSubject = $request->get('nameSubject');
+        $subject->final = $request->get('final');
+        $subject->skill = $request->get('skill');
+        $subject->duration = $request->get('duration');
+        $subject->save();
+        return Redirect::route('subject.index');
     }
 
     /**

@@ -72,16 +72,31 @@
                                         </div>
                                     </div>
                                     <div class="card-footer text-center">
-                                        {{-- <div class="alert alert-warning">
-                                            Sai email hoặc mật khẩu
-                                        </div> --}}
+                                        {{-- @if (Session::exists("error"))
+                                            @foreach (Session::get("error") as $key => $value)
+                                                @if ($key == 'block')
+                                                    {{$value}}   
+                                                @elseif($key == 'message')
+                                                    {{$value}}
+                                                @endif
+                                            @endforeach
+                                        @endif --}}
                                         @if (Session::exists('error'))
                                             <div class="alert alert-warning">
                                                 {{ Session::get('error.message')}}
                                             </div>
                                         @endif
+
                                         <button type="submit" class="btn btn-fill btn-wd ">Đăng nhập</button>
                                     </div>
+                                    {{-- <div class="card-footer text-center">
+                                        @if (Session::exists('ban'))
+                                            
+                                            
+                                        @endif
+                                        <button type="submit" class="btn btn-fill btn-wd ">Đăng nhập</button>
+                                    </div> --}}
+                                    
                                 </div>
                             </form>
                         </div>

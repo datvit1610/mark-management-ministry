@@ -16,7 +16,7 @@ class Student extends Migration
         Schema::create('student', function (Blueprint $table) {
             $table->increments('idStudent');
             $table->string('lastName', 30);
-            $table->string('firstname', 30);
+            $table->string('firstName', 30);
             $table->string('email', 150)->unique();
             $table->string('passWord', 50);
             $table->date('DoB');

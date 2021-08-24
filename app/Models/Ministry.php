@@ -17,10 +17,18 @@ class Ministry extends Model
 
     public function getRoleNameAttribute()
     {
-        if ($this->role == 0) { #giới tính == 0
+        if ($this->role == 0) {
             return "Quản lý";
         } else {
             return  "Giáo vụ";
+        }
+    }
+    public function getBlockNameAttribute()
+    {
+        if ($this->block == 0) {
+            return "Hoạt động";
+        } else {
+            return  "Khóa";
         }
     }
 }

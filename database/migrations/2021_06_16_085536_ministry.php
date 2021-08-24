@@ -20,6 +20,7 @@ class Ministry extends Migration
             $table->string('passWord', 30);
             $table->char('phone', 10)->unique();
             $table->boolean('role');
+            $table->boolean('block');
         });
     }
 

@@ -27,13 +27,13 @@
                             <tr>
                                 <td>{{$major->idMajor}}</td> 
                                 <td>{{$major->nameMajor}}</td> 
-								<td><a class="btn btn-facebook" href="{{ route('major.show',$major->idMajor) }}">Xem</a></td>
-								<td><a class="btn btn-warning" href="{{ route('major.edit',$major->idMajor) }}">Sửa</a></td>
+								<td><a class="btn btn-facebook ti-eye" href="{{ route('major.show',$major->idMajor) }}"></a></td>
+								<td><a class="btn btn-warning ti-settings" href="{{ route('major.edit',$major->idMajor) }}"></a></td>
 								<td>
 									<form action="{{ route('major.destroy',$major->idMajor) }}" method="post">
 										@method('DELETE')
 										@csrf
-										<button class="btn btn-danger">Xoá</button>
+										<button class="btn btn-danger ti-trash"></button>
 									</form>
 								</td>
                             </tr> 

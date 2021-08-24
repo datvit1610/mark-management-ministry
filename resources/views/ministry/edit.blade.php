@@ -36,6 +36,18 @@
 							<input type="radio" name="role" value="1" <?= $ministry->role == 1 ? "checked" : "" ?>>
 							<label>Giáo vụ</label>
                         </div>
+                </div>
+                <div class="form-group">
+                    <label>Khóa</label>
+                        <div class="radio">
+							<input type="radio" name="block" value="0"  <?= $ministry->block == 0 ? "checked" : "" ?>>
+							<label>Hoạt động</label>
+						</div>
+                        <div class="radio">
+							<input type="radio" name="block" value="1" <?= $ministry->block == 1 ? "checked" : "" ?>>
+							<label>Khóa</label>
+                        </div>
+                </div>
                 <button type="submit" class="btn btn-fill btn-info">Cập nhật</button>
             </div>
 	    </form>

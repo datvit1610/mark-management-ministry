@@ -24,13 +24,14 @@
 	                </div>
 	            </div>
 	            <ul class="nav">
-					<li>
-						<a href="{{ route ('ministry.index')}}">
-	                        <i class="ti-clipboard"></i>
-							<span class="sidebar-normal">Quản lý giáo vụ</span>	                       
-	                    </a>
-	                </li>
-
+					@if (session()->get('role')==1)
+						<li>
+							<a href="{{ route ('ministry.index')}}">
+								<i class="ti-clipboard"></i>
+								<span class="sidebar-normal">Quản lý giáo vụ</span>	                       
+							</a>
+						</li>
+					@endif		
 					<li>
 						<a href="{{ route ('course.index')}}">
 	                        <i class="ti-clipboard"></i>
@@ -50,6 +51,14 @@
 	                        <i class="ti-view-list-alt"></i>
 	                        <span class="sidebar-normal">Quản lý lớp</span>
 	                    </a>
+					
+					<li>
+						<a href="{{ route ('subject.index')}}">
+							<i class="ti-package"></i>
+							<span class="sidebar-normal">Môn học</span>
+						</a>
+					</li>
+
 					<li>
 	                    <a href="{{ route ('student.index') }}">
 							<i class="ti-package"></i>

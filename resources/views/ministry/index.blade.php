@@ -21,6 +21,7 @@
 						<th>Email</th>
 						<th>Số điện thoại</th>
                         <th>Quyền</th>
+						<th>Trạng thái</th>
 						<th>Sửa</th>
 	                </thead>
 	                <tbody>
@@ -31,7 +32,8 @@
                                 <td>{{$ministry->email}}</td>
                                 <td>{{$ministry->phone}}</td>
                                 <td>{{$ministry->RoleName}}</td> 
-								<td><a class="btn btn-warning" href="{{ route('ministry.edit',$ministry->idMinistry) }}">Sửa</a></td>
+								<td>{{$ministry->BlockName}}</td>
+								<td><a class="btn btn-warning ti-settings" href="{{ route('ministry.edit',$ministry->idMinistry) }}"></a></td>
                             </tr> 
                         @endforeach                                       
 	                </tbody>

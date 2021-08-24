@@ -7,6 +7,7 @@ use App\Http\Controllers\MajorController;
 use App\Http\Controllers\MinistryCotroller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Middleware\CheckLogged;
 use App\Http\Middleware\CheckLogin;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,8 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::resource('major', MajorController::class);
     //Khóa
     Route::resource('course', CourseController::class);
+    //Môn học
+    Route::resource('subject', SubjectController::class);
     //Lớp
     Route::resource('grade', GradeController::class);
     //profile
