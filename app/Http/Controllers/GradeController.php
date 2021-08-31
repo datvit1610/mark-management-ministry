@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\Grade;
+use App\Models\Major;
+use App\Models\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -19,6 +22,7 @@ class GradeController extends Controller
         $search = $request->get('search');
         // $grades = Grade::where('nameGrade', 'like', "%$search%");
         // DB::enableQueryLog();
+
         $grade = DB::table('grade')
             ->join('course', 'grade.idCourse', '=', 'course.idCourse')
             ->join('major', 'grade.idMajor', '=', 'major.idMajor')
@@ -44,16 +48,22 @@ class GradeController extends Controller
      */
     public function create()
     {
+        $course = Course::all();
+        $major = Major::all();
         $grades = DB::table('grade')
             ->join('course', 'grade.idCourse', '=', 'course.idCourse')
             ->join('major', 'grade.idMajor', '=', 'major.idMajor')
             ->select(
-                'grade.*',
-                'course.nameCourse',
-                'major.nameMajor'
+                // 'grade.*'
+                // 'course.nameCourse',
+                // 'course.idCourse',
+                // 'major.nameMajor'
+
             )->get();
         return view("grade.create", [
-            "grades" => $grades
+            "grades" => $grades,
+            "course" => $course,
+            "major" => $major
         ]);
     }
 
@@ -68,6 +78,7 @@ class GradeController extends Controller
         $nameGrade = $request->get('nameGrade');
         $idCourse = $request->get('idCourse');
         $idMajor = $request->get('idMajor');
+
         $grade = new Grade();
         $grade->nameGrade = $nameGrade;
         $grade->idCourse = $idCourse;
@@ -86,6 +97,17 @@ class GradeController extends Controller
     {
         $grade = Grade::find($id);
         return $grade;
+        // $grades = Grade::find($id);
+        // $student = DB::table('student')
+        //     ->join('grade', 'student.idGrade', '=', 'grade.idGrade')
+        //     ->select(
+        //         'student.*'
+
+        //     )->get();
+        // return view('student.index', [
+        //     "grades" => $grades->idGrade,
+        //     "student" => $student
+        // ]);
     }
 
     /**

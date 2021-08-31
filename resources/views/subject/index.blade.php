@@ -22,7 +22,7 @@
                         <th>Final</th>                       
                         <th>Skill</th>
                         <th>Số giờ</th>
-						<th>Xem</th>
+						{{-- <th>Xem</th> --}}
 						<th>Sửa</th>
 	                </thead>
 	                <tbody>
@@ -32,14 +32,14 @@
                                 <td>{{$subject->nameSubject}}</td>
                                 <td>
                                     @if ($subject->final == 0)
-                                        <span class='ti-close'></span>
+                                        <span class='ti-na'></span>
                                     @else
                                         <span class='ti-check'></span>
                                     @endif
                                 </td>
                                 <td>
                                     @if ($subject->skill == 0)
-                                        <span class='ti-close'></span>
+                                        <span class='ti-na'></span>
                                     @else
                                         <span class='ti-check'></span>
                                     @endif
@@ -47,7 +47,7 @@
                                 </td>
                                 <td>{{$subject->duration}}</td>
                                 
-								<td><a class="btn btn-facebook ti-eye" href="{{ route('subject.show',$subject->idSubject) }}"></a></td>
+								{{-- <td><a class="btn btn-facebook ti-eye" href="{{ route('subject.show',$subject->idSubject) }}"></a></td> --}}
 								<td><a class="btn btn-warning ti-settings" href="{{ route('subject.edit',$subject->idSubject) }}"></a></td>
 									{{-- <td>
 										<form action="{{ route('subject.destroy',$subject->idSubject) }}" method="post">

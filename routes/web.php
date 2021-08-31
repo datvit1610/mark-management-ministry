@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\MarkController;
 use App\Http\Controllers\MinistryCotroller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -35,6 +36,18 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::resource('grade', GradeController::class);
     //profile
     Route::resource('profile', ProfileController::class);
+    //Điểm
+    // Route::resource('mark', MarkController::class);
+    Route::name('mark.')->group(function () {
+        Route::get('/index', [MarkController::class, 'index'])->name('index');
+        Route::get('mark/create', [MarkController::class, 'create'])->name('create');
+        Route::post('mark/store', [MarkController::class, 'store'])->name('store');
+        Route::get('mark/{idStudent}/{idSubject}', [MarkController::class, 'editMark'])->name('edit');
+        Route::post('mark/{idStudent}/{idSubject}', [MarkController::class, 'updateMark'])->name('update');
+    });
+
+    // Route::get('mark/edit ', [MarkController::class, 'edit']);
+    // Route::post('mark', [MarkController::class, 'update']);
     //Sinh viên
     Route::resource('student', StudentController::class);
     Route::name('student.')->group(function () {
@@ -43,5 +56,5 @@ Route::middleware([CheckLogin::class])->group(function () {
     });
 });
 //
-Route::get('/mark', [Mark::class, 'mark'])->name('mark');
+
 //

@@ -30,8 +30,9 @@
 				    @foreach ($grades as $grade)
 				@if ($grade->idGrade == $idGrade)
 				   Danh sách sinh viên lớp {{$grade->nameGrade}}
-			   @else
-				   
+			   				
+				@else
+									  
 			   @endif 
 			@endforeach
 			</h4><br>
@@ -43,29 +44,26 @@
 						<th>Email</th>
 						<th>Ngày sinh</th>
 						<th>Giới tính</th>
-						<th>Xem điểm</th>
+						{{-- <th>Xem điểm</th> --}}
 						<th>Sửa</th>
 	                </thead>
 	                <tbody>
 	                    @foreach ($students as $student)
-                            <tr>
-                                
+                            <tr>                                
 								<td>{{$student->FullName}}</td>
 								<td>{{$student->email}}</td>
 								<td>{{$student->DoB}}</td> 
                                 <td>{{$student->GenderName}}</td> 
 								 
-								<td><a class="btn btn-facebook ti-eye" href="{{ route('student.show',$student->idStudent) }}"></a></td>								
+								{{-- <td>
+									<a class="btn btn-facebook ti-eye" href="{{ route('mark.index',
+									['student' => $student->idStudent]) }}"></a>
+								</td> --}}
+
 								<td>
 									<a class="btn btn-warning ti-settings" href="{{ route('student.edit',$student->idStudent) }}"></a>
 								</td>
-								{{-- <td>
-									<form action="{{ route('student.destroy',$student->idStudent) }}" method="post">
-				 						@method('DELETE')
-										@csrf
-										<button class="btn btn-danger">Xoá</button>
-									</form>
-								</td> --}}
+								
                             </tr> 
                         @endforeach                                       
 	                </tbody>

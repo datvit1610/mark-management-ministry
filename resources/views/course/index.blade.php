@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 	
-			<br>
     <div class="card">
 	    <div class="card-header">
 	        <h4 class="card-title">Danh sách các khóa</h4><br> 
@@ -28,7 +27,8 @@
                             <tr>
                                 <td>{{$course->idCourse}}</td> 
                                 <td>K{{$course->nameCourse}}</td> 
-								<td><a class="btn btn-facebook ti-eye"  href="{{ route('major.index') }}"></a></td>
+								<td><a class="btn btn-facebook ti-eye"  href="{{ route('major.index',
+								['major' => $course->idCourse]) }}"></a></td>
 								{{-- <td><a class="btn btn-warning" href="{{ route('course.edit',$course->idCourse) }}">Sửa</a></td>
 								<td>
 									<form action="{{ route('course.destroy',$course->idCourse) }}" method="post">

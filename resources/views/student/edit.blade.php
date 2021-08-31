@@ -47,7 +47,9 @@
                     <label>Chọn Lớp:</label>
                     <select class="selectpicker" data-style="btn btn-danger btn-block" title="Lớp"  name="idGrade">
                         @foreach ($students as $grade)
-                            <option value="{{$grade->idGrade}}" <?= $student->idGrade?>>{{$grade->nameGrade}}</option>                                   
+                            <option value="{{$grade->idGrade}}" <?= $student->idGrade?>>{{$grade->nameGrade}}
+                                
+                            </option>                                   
                         @endforeach                       
                     </select>
                 </div>

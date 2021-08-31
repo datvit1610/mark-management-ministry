@@ -19,8 +19,8 @@
                 <div class="col-sm-6">
                     <label>Chọn khóa:</label>
                     <select class="selectpicker" data-style="btn btn-danger btn-block" title="Khóa" data-size="7" name="idCourse">
-                        @foreach ($grades as $course)
-                            <option value="{{$course->idCourse}}">{{$course->nameCourse}}</option>                                   
+                        @foreach ($course as $courses)
+                            <option value="{{$courses->idCourse}}">{{$courses->nameCourse}}</option>                                   
                         @endforeach                       
                     </select>
                 </div>
@@ -28,8 +28,8 @@
                 <div class="col-sm-6">
                     <label>Chọn Ngành:</label>
                     <select class="selectpicker" data-style="btn btn-danger btn-block" title="Ngành" data-size="7" name="idMajor">
-                        @foreach ($grades as $major)
-                                <option value="{{$major->idMajor}}">{{$major->nameMajor}}</option>                                   
+                        @foreach ($major as $majors)
+                                <option value="{{$majors->idMajor}}">{{$majors->nameMajor}}</option>                                   
                             @endforeach                       
                     </select>
                 </div>

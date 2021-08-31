@@ -22,7 +22,7 @@
 							<label>Có</label>
 						</div>
                         <div class="radio">
-							<input type="radio" name="role" value="0" <?= $subject->final == 0 ? "checked" : "" ?>>
+							<input type="radio" name="final" value="0" <?= $subject->final == 0 ? "checked" : "" ?>>
 							<label>Không có</label>
                         </div>
                 </div>

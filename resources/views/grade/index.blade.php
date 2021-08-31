@@ -31,7 +31,8 @@
                                 <td>{{$grades->nameGrade}}</td>
 								<td>k{{$grades->nameCourse}}</td>
 								<td>{{$grades->nameMajor}}</td>
-								<td><a class="btn btn-facebook ti-eye" href="{{ route('grade.show',$grades->idGrade) }}"></a></td>
+								<td><a class="btn btn-facebook ti-eye" href="{{ route('student.index',
+								['grade'=> $grades->idGrade]) }}"></a></td>
 								{{-- <td>
 									<form action="{{ route('grade.destroy',$grades->idGrade) }}" method="post">
 										@method('DELETE')

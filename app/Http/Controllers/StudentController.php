@@ -24,9 +24,10 @@ class StudentController extends Controller
         $students = Student::where('idGrade', $grade)->get();
         // dd($students);
         return view('student.index', [
+            'idGrade' => $grade,
             'grades' => $grades,
-            'students' => $students,
-            'idGrade' => $grade
+            'students' => $students
+
         ]);
     }
 
@@ -37,14 +38,16 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $student = DB::table('student')
+        $lop = Grade::all();
+        $grades = DB::table('student')
             ->join('grade', 'student.idGrade', '=', 'grade.idGrade')
             ->select(
-                'student.*',
+                'student.idGrade',
                 'grade.nameGrade'
             )->get();
         return view("student.create", [
-            "student" => $student
+            "grades" => $grades,
+            "lop" => $lop
         ]);
     }
 
@@ -84,7 +87,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+        return $student;
     }
 
     /**
@@ -117,7 +121,6 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

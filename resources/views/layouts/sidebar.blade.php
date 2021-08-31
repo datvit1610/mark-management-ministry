@@ -4,7 +4,6 @@
 				<a href="http://www.creative-tim.com" class="simple-text logo-mini">
 					XĐ
 				</a>
-
 				<a href="../mark"  class="simple-text logo-normal">
 					Xem điểm 
 				</a>
@@ -51,18 +50,26 @@
 	                        <i class="ti-view-list-alt"></i>
 	                        <span class="sidebar-normal">Quản lý lớp</span>
 	                    </a>
-					
-					<li>
-						<a href="{{ route ('subject.index')}}">
-							<i class="ti-package"></i>
-							<span class="sidebar-normal">Môn học</span>
-						</a>
 					</li>
 
 					<li>
 	                    <a href="{{ route ('student.index') }}">
 							<i class="ti-package"></i>
 							<span class="sidebar-normal">Quản lý sinh viên</span>
+						</a>
+	                </li>
+
+					<li>
+						<a href="{{ route ('subject.index') }}">
+							<i class="ti-package"></i>
+							<span class="sidebar-normal">Môn học</span>
+						</a>
+					</li>
+
+					<li>
+	                    <a href="{{ route ('mark.index') }}">
+							<i class="ti-package"></i>
+							<span class="sidebar-normal">Quản lý điểm</span>
 						</a>
 	                </li>
 	            </ul>

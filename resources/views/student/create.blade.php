@@ -67,7 +67,7 @@
                 <div class="card-content">
                     <label>Chọn Lớp:</label>
                     <select class="selectpicker" data-style="btn btn-danger btn-block" title="Lớp" data-size="7" name="idGrade">
-                        @foreach ($student as $grade)
+                        @foreach ($lop as $grade)
                             <option value="{{$grade->idGrade}}">{{$grade->nameGrade}}</option>                                   
                         @endforeach                       
                     </select>

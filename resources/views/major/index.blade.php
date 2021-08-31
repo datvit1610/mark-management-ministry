@@ -20,22 +20,22 @@
 	                    <th>tên</th>
 						<th>Xem</th>
 						<th>Sửa</th>
-						<th>Xóa</th>
+						
 	                </thead>
 	                <tbody>
 	                    @foreach ($majors as $major)
                             <tr>
                                 <td>{{$major->idMajor}}</td> 
                                 <td>{{$major->nameMajor}}</td> 
-								<td><a class="btn btn-facebook ti-eye" href="{{ route('major.show',$major->idMajor) }}"></a></td>
-								<td><a class="btn btn-warning ti-settings" href="{{ route('major.edit',$major->idMajor) }}"></a></td>
-								<td>
+								<td><a class="btn btn-facebook ti-eye" href="{{ route('grade.index',$major->idMajor) }}"></a></td>
+								<td><a class="btn btn-warning ti-settings" href="{{ route('major.edit',['major' =>$major->idMajor]) }}"></a></td>
+								{{-- <td>
 									<form action="{{ route('major.destroy',$major->idMajor) }}" method="post">
 										@method('DELETE')
 										@csrf
 										<button class="btn btn-danger ti-trash"></button>
 									</form>
-								</td>
+								</td> --}}
                             </tr> 
                         @endforeach                                       
 	                </tbody>
