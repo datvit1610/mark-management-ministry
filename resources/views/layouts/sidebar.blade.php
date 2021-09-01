@@ -23,7 +23,7 @@
 	                </div>
 	            </div>
 	            <ul class="nav">
-					@if (session()->get('role')==1)
+					@if (session()->get('role')==0)
 						<li>
 							<a href="{{ route ('ministry.index')}}">
 								<i class="ti-clipboard"></i>

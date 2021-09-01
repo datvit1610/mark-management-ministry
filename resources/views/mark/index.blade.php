@@ -66,50 +66,51 @@
                                         <td>    
                                             @if ($mark->final == 1 && $mark->skill == 1)
                                                 @if ($mark->final1 >=5 && $mark->skill1 >= 5 )
-                                                    <span>Pass</span>
+                                                    <span>Qua môn</span>
                                                 @elseif($mark->final1 < 5 && $mark->skill1 < 5)
+                                                        
                                                     @if ($mark->final2 >=5 && $mark->skill2 >=5)
-                                                        <span>Pass</span>
+                                                        <span>Qua môn</span>
                                                     @elseif($mark->final2 < 5 || $mark->skill2 < 5)
-                                                        <span>Tạch</span>
+                                                        <span>Học lại</span>
                                                     @else 
-                                                         <span>Tạch</span>
+                                                         <span>Học lại</span>
                                                     @endif
                                                 @elseif($mark->final1 > 5 && $mark->skill1 < 5)
                                                     @if($mark->skill2 < 5)
-                                                    <span>Tạch</span>
+                                                    <span>Học lại</span>
                                                     @else
-                                                    <span>Pass</span>
+                                                    <span>Qua môn</span>
                                                     @endif
                                                 @elseif($mark->final1 < 5 && $mark->skill1 > 5)
                                                     @if($mark->final2 < 5 )
-                                                    <span>Tạch</span>
+                                                    <span>Học lại</span>
                                                     @else
-                                                    <span>Pass</span>
+                                                    <span>Qua môn</span>
                                                     @endif
                                                 @endif
                                             @elseif($mark->final == 1 && $mark->skill == 0)
                                                     @if ($mark->final1 >=5)
-                                                        <span>Pass</span>
+                                                        <span>Qua môn</span>
                                                     @elseif($mark->final1 < 5)
                                                         @if ($mark->final2 == NULL)
-                                                            <span>Tạch</span>
+                                                            <span>Học lại</span>
                                                         @elseif($mark->final2 < 5)
-                                                            <span>Tạch</span>
+                                                            <span>Học lại</span>
                                                         @else 
-                                                            <span>Pass</span>
+                                                            <span>Qua môn</span>
                                                         @endif
                                                     @endif
                                             @elseif($mark->skill == 1 && $mark->final == 0)
                                                  @if ($mark->skill1 >=5)
-                                                     <span>Pass</span>
+                                                     <span>Qua môn</span>
                                                  @elseif($mark->skill1 < 5)
                                                      @if ($mark->skill2 == NULL)
-                                                         <span>Tạch</span>
+                                                         <span>Học lại</span>
                                                      @elseif($mark->skill2 < 5)
-                                                         <span>Tạch</span>
+                                                         <span>Học lại</span>
                                                      @else 
-                                                        <span>Pass</span>
+                                                        <span>Qua môn</span>
                                                      @endif
                                                  @endif       
                                              @endif

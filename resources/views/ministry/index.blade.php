@@ -24,7 +24,9 @@
 						<th>Trạng thái</th>
 						<th>Sửa</th>
 	                </thead>
+					
 	                <tbody>
+						
 	                    @foreach ($ministrys as $ministry)
                             <tr>
                                 <td>{{$ministry->idMinistry}}</td> 
@@ -32,11 +34,19 @@
                                 <td>{{$ministry->email}}</td>
                                 <td>{{$ministry->phone}}</td>
                                 <td>{{$ministry->RoleName}}</td> 
-								<td>{{$ministry->BlockName}}</td>
-								<td><a class="btn btn-warning ti-settings" href="{{ route('ministry.edit',$ministry->idMinistry) }}"></a></td>
+								<td>{{$ministry->BlockName}}</td>								
+								<td>	
+									@if($ministry->role == 1)
+									<a class="btn btn-warning ti-settings" href="{{ route('ministry.edit',$ministry->idMinistry) }}"></a>
+									@else 
+									<span></span>
+									@endif 
+								</td>								
                             </tr> 
-                        @endforeach                                       
+                        @endforeach  
+						                                   
 	                </tbody>
+					
 	            </table>
 				<div class="text-center">
 					{{ $ministrys->appends(['search' => $search])->links() }}

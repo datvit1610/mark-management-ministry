@@ -45,7 +45,6 @@ class CourseController extends Controller
     {
         $name = $request->get('name');
         $course = new Course();
-        dd($course);
         $course->nameCourse = $name;
         $course->save();
         return Redirect::route('course.index');

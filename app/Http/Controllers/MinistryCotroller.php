@@ -46,12 +46,14 @@ class MinistryCotroller extends Controller
         $passWord = $request->get('passWord');
         $phone = $request->get('phone');
         $role = $request->get('role');
+        $block = $request->get('block');
         $ministry = new Ministry();
         $ministry->nameMinistry = $name;
         $ministry->email = $email;
         $ministry->passWord = $passWord;
         $ministry->phone = $phone;
         $ministry->role = $role;
+        $ministry->block = $block;
         $ministry->save();
         return Redirect::route('ministry.index');
     }

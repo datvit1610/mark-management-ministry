@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
-	<div class="text-right">
-		<a href="{{ route('major.create') }}" class="btn btn-info btn-fill btn-wd">Thêm ngành</a>
-	</div>
+	
 			<br>
     <div class="card">
 	    <div class="card-header">
@@ -12,7 +10,10 @@
 	    						<span class="input-group-addon"><i class="fa fa-search"></i></span>
 	    						<input type="text" value="{{$search}}" name="search" class="form-control" placeholder="Search...">
 	    					</div>
-	    				</form>                           
+	    		</form> 
+				<div class="text-right">
+					<a href="{{ route('major.create') }}" class="btn btn-info btn-fill btn-wd">Thêm ngành</a>
+				</div>                          
 	        <div class="card-content table-responsive table-full-width">
 	            <table class="table table-striped">
 	                <thead>

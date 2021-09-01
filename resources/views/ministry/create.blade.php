@@ -35,6 +35,18 @@
 							<input type="radio" name="role" value="1">
 							<label>Giáo vụ</label>
                         </div>
+                </div>
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                        <div class="radio">
+							<input type="radio" name="block" value="0">
+							<label>Hoạt động</label>
+						</div>
+                        <div class="radio">
+							<input type="radio" name="block" value="1">
+							<label>Khóa</label>
+                        </div>
+                </div>
                 <button type="submit" class="btn btn-fill btn-info">Thêm</button>
             </div>
 	    </form>

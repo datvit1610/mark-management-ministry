@@ -19,8 +19,8 @@
 	                    <th>Mã</th>
 	                    <th>Khóa</th>
 						<th>Xem</th>
-						{{-- <th>Sửa</th>
-						<th>Xóa</th> --}}
+						<th>Sửa</th>
+						{{-- <th>Xóa</th> --}}
 	                </thead>
 	                <tbody>
 	                    @foreach ($courses as $course)
@@ -29,8 +29,8 @@
                                 <td>K{{$course->nameCourse}}</td> 
 								<td><a class="btn btn-facebook ti-eye"  href="{{ route('major.index',
 								['major' => $course->idCourse]) }}"></a></td>
-								{{-- <td><a class="btn btn-warning" href="{{ route('course.edit',$course->idCourse) }}">Sửa</a></td>
-								<td>
+								<td><a class="btn btn-warning" href="{{ route('course.edit',$course->idCourse) }}">Sửa</a></td>
+								{{-- <td>
 									<form action="{{ route('course.destroy',$course->idCourse) }}" method="post">
 										@method('DELETE')
 										@csrf
