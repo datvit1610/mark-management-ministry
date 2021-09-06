@@ -18,7 +18,7 @@
 	                <thead>
 	                    <th>Mã</th>
 	                    <th>Khóa</th>
-						<th>Xem</th>
+						
 						<th>Sửa</th>
 						{{-- <th>Xóa</th> --}}
 	                </thead>
@@ -27,14 +27,14 @@
                             <tr>
                                 <td>{{$course->idCourse}}</td> 
                                 <td>K{{$course->nameCourse}}</td> 
-								<td><a class="btn btn-facebook ti-eye"  href="{{ route('major.index',
-								['major' => $course->idCourse]) }}"></a></td>
-								<td><a class="btn btn-warning" href="{{ route('course.edit',$course->idCourse) }}">Sửa</a></td>
+								{{-- <td><a class="btn btn-facebook ti-eye"  href="{{ route('grade.index',
+								['courses' => $course->idCourse]) }}"></a></td> --}}
+								<td><a class="btn btn-warning ti-settings" href="{{ route('course.edit',$course->idCourse) }}"></a></td>
 								{{-- <td>
 									<form action="{{ route('course.destroy',$course->idCourse) }}" method="post">
 										@method('DELETE')
 										@csrf
-										<button class="btn btn-danger">Xoá</button>
+										<button class="btn btn-danger ti-trash"></button>
 									</form>
 								</td> --}}
                             </tr> 

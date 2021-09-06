@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticateController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DoshboardController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\MarkController;
@@ -42,8 +43,16 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::get('/index', [MarkController::class, 'index'])->name('index');
         Route::get('mark/create', [MarkController::class, 'create'])->name('create');
         Route::post('mark/store', [MarkController::class, 'store'])->name('store');
+
         Route::get('mark/{idStudent}/{idSubject}', [MarkController::class, 'editMark'])->name('edit');
         Route::post('mark/{idStudent}/{idSubject}', [MarkController::class, 'updateMark'])->name('update');
+
+        Route::get('mark/add-by-excel', [MarkController::class, 'addByExcel'])->name('add-by-excel');
+        Route::post('mark/add-by-excel-process', [MarkController::class, 'import'])->name('add-by-excel-process');
+
+        Route::get('/statisSubject', [MarkController::class, 'statisSubject'])->name('statisSubject');
+        Route::get('/statisGrade', [MarkController::class, 'statisGrade'])->name('statisGrade');
+        Route::get('/statisMark', [MarkController::class, 'statisMark'])->name('statisMark');
     });
 
     // Route::get('mark/edit ', [MarkController::class, 'edit']);
@@ -54,6 +63,8 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::get('/add-by-excel', [StudentController::class, 'addByExcel'])->name('add-by-excel');
         Route::post('/add-by-excel-process', [StudentController::class, 'import'])->name('add-by-excel-process');
     });
+
+    Route::get('doshboard/index', [DoshboardController::class, 'doshboard'])->name('index');
 });
 //
 

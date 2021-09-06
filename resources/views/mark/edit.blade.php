@@ -11,6 +11,14 @@
             </div>
             <div class="card-content">
                 <div class="form-group">
+                    <label>Tên sinh viên</label>
+                    <input type="text" name="nameStudent" class="form-control" value="{{ $mark[0]->lastName}}  {{$mark[0]->firstName}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Tên môn</label>
+                    <input type="text" name="nameSubject" class="form-control" value="{{ $mark[0]->nameSubject }}" readonly>
+                </div>
+                <div class="form-group">
                     <label>Final 1</label>
                     <input type="text" name="final1" class="form-control" value="{{ $mark[0]->final1 }}" >
                 </div>

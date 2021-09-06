@@ -99,6 +99,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
+        $lop = Grade::all();
         $student = Student::find($id);
         $students = DB::table('student')
             ->join('grade', 'student.idGrade', '=', 'grade.idGrade')
@@ -108,7 +109,8 @@ class StudentController extends Controller
             )->get();
         return view('student.edit', [
             "student" => $student,
-            "students" => $students
+            "students" => $students,
+            "lop" => $lop
         ]);
     }
 
@@ -121,6 +123,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $student = Student::find($id);
+        $student->lastName = $request->get('lastName');
+        $student->firstName = $request->get('firstName');
+        $student->email = $request->get('email');
+        $student->DoB = $request->get('DoB');
+        $student->gender = $request->get('gender');
+        $student->idGrade = $request->get('idGrade');
+        $student->save();
+        return Redirect::route('student.index');
     }
 
     /**

@@ -34,7 +34,7 @@
 							<label>Có</label>
 						</div>
                         <div class="radio">
-							<input type="radio" name="skill" value="1">
+							<input type="radio" name="skill" value="0">
 							<label>Không</label>
 						</div>
                     </div>                   

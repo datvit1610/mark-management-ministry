@@ -12,7 +12,7 @@
             <div class="card-content">
                 <div class="form-group">
                     <label>Tên giáo vụ</label>
-                    <input type="text" name="name" class="form-control" value="{{$ministry->nameMinistry}}">
+                    <input type="text" name="name" class="form-control" value="{{$ministry->nameMinistry}}" >
                 </div>
                 <div class="form-group">
                     <label>Email</label>

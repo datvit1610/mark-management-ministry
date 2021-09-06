@@ -23,6 +23,12 @@
 	                </div>
 	            </div>
 	            <ul class="nav">
+					<li>
+						<a href="doshboard/index">
+	                        <i class="ti-clipboard"></i>
+							<span class="sidebar-normal">Trang chủ</span>	                       
+	                    </a>
+	                </li>
 					@if (session()->get('role')==0)
 						<li>
 							<a href="{{ route ('ministry.index')}}">
@@ -70,6 +76,13 @@
 	                    <a href="{{ route ('mark.index') }}">
 							<i class="ti-package"></i>
 							<span class="sidebar-normal">Quản lý điểm</span>
+						</a>
+	                </li>
+
+					<li>
+	                    <a href="{{ route ('mark.statisGrade') }}">
+							<i class="ti-package"></i>
+							<span class="sidebar-normal">Thống kê</span>
 						</a>
 	                </li>
 	            </ul>

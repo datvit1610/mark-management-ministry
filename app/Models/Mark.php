@@ -15,7 +15,9 @@ class Mark extends Model
 
     public $primaryKey = ['idStudent', 'idSubject'];
 
-    protected $fillable = ['idStudent', 'idSubject', 'final1', 'skill1'];
+    protected $fillable = ['idStudent', 'idSubject', 'final1', 'skill1', 'final2', 'skill2'];
+
+    public $incrementing = false;
 
     // public function getFullName2Attribute()
     // {

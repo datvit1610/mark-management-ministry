@@ -28,13 +28,11 @@
 			</div>
 			   <h4 class="card-title">
 				    @foreach ($grades as $grade)
-				@if ($grade->idGrade == $idGrade)
-				   Danh sách sinh viên lớp {{$grade->nameGrade}}
-			   				
-				@else
-									  
-			   @endif 
-			@endforeach
+						@if ($grade->idGrade == $idGrade)
+				   			Danh sách sinh viên lớp {{$grade->nameGrade}}			   			
+						@else									  
+			   			@endif 
+					@endforeach
 			</h4><br>
 	        <div class="card-content table-responsive table-full-width">
 	            <table class="table table-striped">

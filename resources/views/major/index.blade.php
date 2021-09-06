@@ -19,8 +19,8 @@
 	                <thead>
 	                    <th>Mã</th>
 	                    <th>tên</th>
-						<th>Xem</th>
 						<th>Sửa</th>
+						{{-- <th>Xóa</th> --}}
 						
 	                </thead>
 	                <tbody>
@@ -28,7 +28,7 @@
                             <tr>
                                 <td>{{$major->idMajor}}</td> 
                                 <td>{{$major->nameMajor}}</td> 
-								<td><a class="btn btn-facebook ti-eye" href="{{ route('grade.index',$major->idMajor) }}"></a></td>
+								{{-- <td><a class="btn btn-facebook ti-eye" href="{{ route('grade.index',$major->idMajor) }}"></a></td> --}}
 								<td><a class="btn btn-warning ti-settings" href="{{ route('major.edit',['major' =>$major->idMajor]) }}"></a></td>
 								{{-- <td>
 									<form action="{{ route('major.destroy',$major->idMajor) }}" method="post">

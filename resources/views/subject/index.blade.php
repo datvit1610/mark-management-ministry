@@ -49,13 +49,13 @@
                                 
 								{{-- <td><a class="btn btn-facebook ti-eye" href="{{ route('subject.show',$subject->idSubject) }}"></a></td> --}}
 								<td><a class="btn btn-warning ti-settings" href="{{ route('subject.edit',$subject->idSubject) }}"></a></td>
-									{{-- <td>
-										<form action="{{ route('subject.destroy',$subject->idSubject) }}" method="post">
-											@method('DELETE')
-											@csrf
-											<button class="btn btn-danger">Xoá</button>
-										</form>
-									</td> --}}
+								{{-- <td>
+									<form action="{{ route('subject.destroy',$subject->idSubject) }}" method="post">
+										@method('DELETE')
+										@csrf
+										<button class="btn btn-danger">Xoá</button>
+									</form>
+								</td> --}}
                             </tr> 
                         @endforeach                                       
 	                </tbody>

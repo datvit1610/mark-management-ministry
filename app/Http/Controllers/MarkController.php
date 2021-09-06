@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Mockery\Matcher\Subset;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\MarkImport;
+use App\Models\Grade;
+use Grade as GlobalGrade;
 
 class MarkController extends Controller
 {
@@ -21,20 +24,22 @@ class MarkController extends Controller
     public function index(Request $request)
     {
         $idStudent = $request->session()->get('id');
-        $search = $request->get('search');
+        $searchSub = $request->get('searchSub');
+        $searchGra = $request->get('searchGra');
         $marks = DB::table('mark')
             ->join('student', 'mark.idStudent', '=', 'student.idStudent')
             ->join('subject', 'mark.idSubject', '=', 'subject.idSubject')
-            ->select('mark.*', 'student.lastName', 'student.firstName', 'subject.nameSubject', 'subject.final', 'subject.skill')
-            ->where('subject.nameSubject', 'like', "%$search%")
+            ->join('grade', 'student.idGrade', '=', 'grade.idGrade')
+            ->select('mark.*', 'student.lastName', 'student.firstName', 'grade.nameGrade',  'subject.nameSubject', 'subject.final', 'subject.skill')
+            ->where('subject.nameSubject', 'like', "%$searchSub%")
+            ->where('grade.nameGrade', 'like', "%$searchGra%")
             ->paginate(10);
-
         // $grades = Grade::where('nameGrade', 'like', "%$search%");
-        // DB::enableQueryLog();    
         return view('mark.index', [
             "idStudent" => $idStudent,
             'marks' => $marks,
-            "search" => $search
+            "searchSub" => $searchSub,
+            "searchGra" => $searchGra
         ]);
     }
 
@@ -52,7 +57,6 @@ class MarkController extends Controller
             ->join('subject', 'mark.idSubject', '=', 'subject.idSubject')
             ->select('mark.*', 'student.lastName', 'student.firstName', 'subject.nameSubject')
             ->get();
-
         return view('mark.create', [
             "student" => $student,
             "subject" => $subject,
@@ -75,7 +79,6 @@ class MarkController extends Controller
                     'final1' => $request->final1,
                     'skill1' => $request->skill1,
                 ]);
-
             return Redirect::route('mark.index');
         } catch (Exception $e) {
             return Redirect::route('mark.create')->with('error', [
@@ -92,7 +95,6 @@ class MarkController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -103,10 +105,6 @@ class MarkController extends Controller
      */
     public function edit()
     {
-        // $mark = Mark::find($id);
-        // $student = Student::findOrFail($student->idStudent);
-        // $subject = Subject::findOrFail($subject->idSubject);
-        // return view('student.subject.edit', compact('student', 'subject'));
     }
     /**
      * Update the specified resource in storage.
@@ -117,13 +115,6 @@ class MarkController extends Controller
      */
     public function update(Request $request, $idStudent, $idSubject)
     {
-        // $mark = Mark::find($idStudent, $idSubject);
-        // $mark->final1 = $request->get('final1');
-        // $mark->final2 = $request->get('final2');
-        // $mark->skill1 = $request->get('skill1');
-        // $mark->skill2 = $request->get('skill2');
-        // $mark->save();
-        // return Redirect::route('mark.index');
     }
 
     /**
@@ -134,7 +125,6 @@ class MarkController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 
     public function editMark($idStudent, $idSubject)
@@ -174,5 +164,72 @@ class MarkController extends Controller
                 'skill2' => $request->get('skill2')
             ]);
         return Redirect::route('mark.index');
+    }
+
+    public function addByExcel()
+    {
+        return view('mark.add-by-excel');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('excel-file');
+        Excel::import(new MarkImport, $file);
+
+        return Redirect::route('mark.index');
+    }
+    /////////////////////////////////////////
+    public function statisGrade()
+    {
+        $grade = Grade::all();
+        return view('mark.statisGrade', [
+            "grade" => $grade
+        ]);
+    }
+
+    public function statisSubject(Request $request)
+    {
+
+        $idGrade = $request->get('grade');
+        // $grades = Grade::all();
+        $grade = DB::table('grade')->where('idGrade', '=', $idGrade)->select('nameGrade');
+
+        $subject = DB::table('subject')
+            ->join('mark', 'subject.idSubject', '=', 'mark.idSubject')
+            ->join('student', 'mark.idStudent', '=', 'student.idStudent')
+            // ->join('grade', 'subject.idGrade', '=', 'grade.idGrade')
+            ->where('student.idGrade', '=', $idGrade)
+            ->get();
+
+        // $search = $request->get('search');
+        // $subject = Subject::where('idGrade', $grade)->get();
+
+        return view('mark.statisSubject', [
+
+            "grade" => $grade,
+            "subject" => $subject
+            // "subject" => $subject
+            // "search" => $search
+        ]);
+    }
+
+    public function statisMark(Request $request)
+    {
+        $idGrade = $request->get('id-grade');
+        $idSubject = $request->get('id-subject');
+        // $subject = Subject::all();
+        // $grade = Grade::all();
+        $mark = DB::table('mark')
+            ->join('student', 'mark.idStudent', '=', 'student.idStudent')
+            ->join('subject', 'mark.idSubject', '=', 'subject.idSubject')
+            ->where('student.idGrade', '=', $idGrade)
+            ->where('mark.idSubject', '=', $idSubject)
+            ->get();
+
+        return view('mark.statisMark', [
+            "mark" => $mark
+            // "subject" => $subject,
+            // "grade" => $grade
+        ]);
     }
 }

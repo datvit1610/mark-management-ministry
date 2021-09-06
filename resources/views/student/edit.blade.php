@@ -25,7 +25,7 @@
                 </div>
                  <div class="form-group">
                     <label>Password</label>
-                    <input type="text" name="password" class="form-control" value="{{$student->passWord}}">
+                    <input type="password" name="password" class="form-control" value="{{$student->passWord}}" readonly>
                 </div>
                  <div class="form-group">
                     <label>Ngày sinh</label>
@@ -46,8 +46,8 @@
                 <div class="card-content">
                     <label>Chọn Lớp:</label>
                     <select class="selectpicker" data-style="btn btn-danger btn-block" title="Lớp"  name="idGrade">
-                        @foreach ($students as $grade)
-                            <option value="{{$grade->idGrade}}" <?= $student->idGrade?>>{{$grade->nameGrade}}
+                        @foreach ($lop as $students)
+                            <option value="{{$students->idGrade}}">{{$students->nameGrade}}
                                 
                             </option>                                   
                         @endforeach                       

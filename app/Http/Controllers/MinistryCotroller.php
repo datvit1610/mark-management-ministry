@@ -81,7 +81,6 @@ class MinistryCotroller extends Controller
             "ministry" => $ministry
         ]);
     }
-
     /**
      * Update the specified resource in storage.
      *
