@@ -8,12 +8,12 @@
 	            <table class="table table-striped text-center">
 	                <thead class="card-title btn-center">
 	                    <th>Tên mục</th>                       
-						<th>Số lượng</th>						
+						          <th>Số lượng</th>						
 	                </thead>
 	                <tbody>
                         <tr>
                           <th>Khóa</th>
-                          <th>{{$course}}<th>
+                          <th>{{$course}}</th>
                         </tr>
                         <tr>
                           <th>Ngành</th>
@@ -33,7 +33,7 @@
                         </tr>
 	                </tbody>
 	            </table>
-				
 	        </div>
 	    </div>
+    </div>
 @endsection

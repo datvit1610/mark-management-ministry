@@ -33,9 +33,8 @@
                             <th>Final 2</th>
                             <th>Skill 1</th>
                             <th>Skill 2</th>
-                            <th>Update</th>
                             <th>Trạng thái</th>
-                            
+                            <th>Update</th>
                         </thead>
                         @foreach ($marks as $mark )
                         <tbody> 
@@ -71,10 +70,7 @@
                                             {{ $mark->skill2 }}  
                                         @endif
                                         </td>
-                                        <td>
-                                            <a class="btn btn-warning ti-settings" href="{{ route('mark.edit',
-                                            ['idStudent'=>$mark->idStudent, 'idSubject'=>$mark->idSubject])}}"></a
-                                        ></td>
+                                        
                                         <td>    
                                             {{-- Có cả 2 --}}
                                             @if ($mark->final == 1 && $mark->skill == 1)
@@ -144,6 +140,10 @@
                                             @endif
                                                 
                                         </td>
+                                        <td>
+                                            <a class="btn btn-warning ti-settings" href="{{ route('mark.edit',
+                                            ['idStudent'=>$mark->idStudent, 'idSubject'=>$mark->idSubject])}}"></a
+                                        ></td>
                                         
                                 </tr> 
 

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\MarkImport;
 use App\Models\Grade;
-use Grade as GlobalGrade;
+
 
 class MarkController extends Controller
 {
@@ -34,7 +34,6 @@ class MarkController extends Controller
             ->where('subject.nameSubject', 'like', "%$searchSub%")
             ->where('grade.nameGrade', 'like', "%$searchGra%")
             ->paginate(10);
-        // $grades = Grade::where('nameGrade', 'like', "%$search%");
         return view('mark.index', [
             "idStudent" => $idStudent,
             'marks' => $marks,
@@ -143,17 +142,6 @@ class MarkController extends Controller
 
     public function updateMark(Request $request)
     {
-        // $mark = new Mark;
-        // dd($request);
-        // $idStudent = $request->get('idStudent');
-        // $idSubject = $request->get('idSubject');
-
-        // $mark = Mark::find($idStudent, $idSubject);
-        // $mark->final1 = $request->get('final1');
-        // $mark->final2 = $request->get('final2');
-        // $mark->skill1 = $request->get('skill1');
-        // $mark->skill2 = $request->get('skill2');
-        // $mark->save();
         $mark = DB::table('mark')
             ->where('idStudent', $request->idStudent)
             ->where('idSubject', $request->idSubject)
@@ -178,58 +166,66 @@ class MarkController extends Controller
 
         return Redirect::route('mark.index');
     }
-    /////////////////////////////////////////
-    public function statisGrade()
+
+    public function statisGrade(Request $request)
     {
+        $search = $request->get('search');
         $grade = Grade::all();
+        // $grades = Grade::where('grade.nameGrade', 'like', "%$search%");
         return view('mark.statisGrade', [
-            "grade" => $grade
+            "grade" => $grade,
+            // "grades" => $grades,
+            "search" => $search
         ]);
     }
 
     public function statisSubject(Request $request)
     {
-
+        $grades = Grade::all();
         $idGrade = $request->get('grade');
-        // $grades = Grade::all();
         $grade = DB::table('grade')->where('idGrade', '=', $idGrade)->select('nameGrade');
-
         $subject = DB::table('subject')
             ->join('mark', 'subject.idSubject', '=', 'mark.idSubject')
             ->join('student', 'mark.idStudent', '=', 'student.idStudent')
-            // ->join('grade', 'subject.idGrade', '=', 'grade.idGrade')
             ->where('student.idGrade', '=', $idGrade)
+            ->select('subject.idSubject', 'subject.nameSubject', 'student.idGrade')
+            ->distinct()
             ->get();
 
-        // $search = $request->get('search');
-        // $subject = Subject::where('idGrade', $grade)->get();
-
         return view('mark.statisSubject', [
-
             "grade" => $grade,
-            "subject" => $subject
-            // "subject" => $subject
-            // "search" => $search
+            "grades" => $grades,
+            "subject" => $subject,
+            "idGrade" => $idGrade,
+
         ]);
     }
 
     public function statisMark(Request $request)
     {
-        $idGrade = $request->get('id-grade');
-        $idSubject = $request->get('id-subject');
-        // $subject = Subject::all();
-        // $grade = Grade::all();
+        $idGrade = $request->get('idGrade');
+        $idSubject = $request->get('idSubject');
+        $subjects = Subject::all();
+        $grades = Grade::all();
+        $all = DB::table('mark')
+            ->join('student', 'mark.idStudent', '=', 'student.idStudent')
+            ->join('subject', 'mark.idSubject', '=', 'subject.idSubject')
+            ->where('student.idGrade', '=', $idGrade)
+            ->where('mark.idSubject', '=', $idSubject)
+            ->count();
         $mark = DB::table('mark')
             ->join('student', 'mark.idStudent', '=', 'student.idStudent')
             ->join('subject', 'mark.idSubject', '=', 'subject.idSubject')
             ->where('student.idGrade', '=', $idGrade)
             ->where('mark.idSubject', '=', $idSubject)
             ->get();
-
         return view('mark.statisMark', [
-            "mark" => $mark
-            // "subject" => $subject,
-            // "grade" => $grade
+            "mark" => $mark,
+            "subjects" => $subjects,
+            "grades" => $grades,
+            "idGrade" => $idGrade,
+            "idSubject" => $idSubject,
+            "all" => $all
         ]);
     }
 }

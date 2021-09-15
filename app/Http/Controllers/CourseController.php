@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -43,11 +44,17 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->get('name');
-        $course = new Course();
-        $course->nameCourse = $name;
-        $course->save();
-        return Redirect::route('course.index');
+        try {
+            $name = $request->get('name');
+            $course = new Course();
+            $course->nameCourse = $name;
+            $course->save();
+            return Redirect::route('course.index');
+        } catch (Exception $e) {
+            return Redirect::route('course.create')->with('error', [
+                "message" => "Hãy điền đủ các trường dữ liệu !",
+            ]);
+        }
     }
 
     /**

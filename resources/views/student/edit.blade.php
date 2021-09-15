@@ -53,7 +53,15 @@
                         @endforeach                       
                     </select>
                 </div>
-                <button type="submit" class="btn btn-fill btn-info">Cập nhật</button>
+                <div class="card-footer text-center">                                       
+                    @if (Session::exists('error'))
+                        <div class="alert alert-warning">
+                            {{ Session::get('error.message')}}
+                        </div>
+                    @endif
+                    <button type="submit" class="btn btn-fill btn-info">Thêm</button> 
+                </div>
+                {{-- <button type="submit" class="btn btn-fill btn-info">Cập nhật</button> --}}
             </div>
 	    </form>
 	</div>

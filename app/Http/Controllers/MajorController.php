@@ -17,7 +17,7 @@ class MajorController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $majors = Major::where('nameMajor', 'like', "%$search%")->paginate(3);
+        $majors = Major::where('nameMajor', 'like', "%$search%")->orderBy('nameMajor', 'asc')->paginate(3);
         return view('major.index', [
             "majors" => $majors,
             "search" => $search,

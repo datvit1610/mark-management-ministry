@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\StudentImport;
+use Exception;
 
 class StudentController extends Controller
 {
@@ -59,24 +60,30 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $lastName = $request->get('lastName');
-        $firstName = $request->get('firstName');
-        $email = $request->get('email');
-        $passWord = $request->get('passWord');
-        $DoB = $request->get('DoB');
-        $gender = $request->get('gender');
-        $idGrade = $request->get('idGrade');
+        try {
+            $lastName = $request->get('lastName');
+            $firstName = $request->get('firstName');
+            $email = $request->get('email');
+            $passWord = $request->get('passWord');
+            $DoB = $request->get('DoB');
+            $gender = $request->get('gender');
+            $idGrade = $request->get('idGrade');
 
-        $student = new Student();
-        $student->lastName = $lastName;
-        $student->firstName = $firstName;
-        $student->email = $email;
-        $student->passWord = $passWord;
-        $student->DoB = $DoB;
-        $student->gender = $gender;
-        $student->idGrade = $idGrade;
-        $student->save();
-        return Redirect::route('student.index');
+            $student = new Student();
+            $student->lastName = $lastName;
+            $student->firstName = $firstName;
+            $student->email = $email;
+            $student->passWord = $passWord;
+            $student->DoB = $DoB;
+            $student->gender = $gender;
+            $student->idGrade = $idGrade;
+            $student->save();
+            return Redirect::route('student.index');
+        } catch (Exception $e) {
+            return Redirect::route('student.create')->with('error', [
+                "message" => "Hãy điền đủ các trường dữ liệu !",
+            ]);
+        }
     }
 
     /**
@@ -123,15 +130,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
-        $student->lastName = $request->get('lastName');
-        $student->firstName = $request->get('firstName');
-        $student->email = $request->get('email');
-        $student->DoB = $request->get('DoB');
-        $student->gender = $request->get('gender');
-        $student->idGrade = $request->get('idGrade');
-        $student->save();
-        return Redirect::route('student.index');
+        try {
+            $student = Student::find($id);
+            $student->lastName = $request->get('lastName');
+            $student->firstName = $request->get('firstName');
+            $student->email = $request->get('email');
+            $student->DoB = $request->get('DoB');
+            $student->gender = $request->get('gender');
+            $student->idGrade = $request->get('idGrade');
+            $student->save();
+            return Redirect::route('student.index');
+        } catch (Exception $e) {
+            return Redirect::route('student.edit')->with('error', [
+                "message" => "Hãy điền đủ các trường dữ liệu !",
+            ]);
+        }
     }
 
     /**

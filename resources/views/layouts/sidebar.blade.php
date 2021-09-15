@@ -4,7 +4,7 @@
 				<a href="http://www.creative-tim.com" class="simple-text logo-mini">
 					XĐ
 				</a>
-				<a href="../mark"  class="simple-text logo-normal">
+				<a href="{{ route('doshboard.index') }}"  class="simple-text logo-normal">
 					Xem điểm 
 				</a>
 			</div>
@@ -24,7 +24,7 @@
 	            </div>
 	            <ul class="nav">
 					<li>
-						<a href="doshboard/index">
+						<a href="{{ route('doshboard.index') }}">
 	                        <i class="ti-clipboard"></i>
 							<span class="sidebar-normal">Trang chủ</span>	                       
 	                    </a>

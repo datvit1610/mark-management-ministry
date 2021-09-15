@@ -23,7 +23,7 @@
 	                                            <label class="col-sm-2 control-label">Email</label>
 	                                            <div class="col-sm-10">
 	                                                <input type="text" name="email" class="form-control" 
-													value="{{ $profile->email }}" >
+													value="{{ $profile->email }}" readonly>
 	                                            </div>
 	                                        </div>
 	                                    </fieldset>

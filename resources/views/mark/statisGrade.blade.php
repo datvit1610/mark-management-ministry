@@ -3,7 +3,7 @@
 	
     <div class="card">
 	    <div class="card-header">
-	        <h4 class="card-title">Hãy chọn lớp cần thống kê</h4><br> 
+	        <h4 class="card-title btn-center">Hãy chọn lớp cần sao kê</h4><br> 
                {{-- <form class="navbar-form navbar-left navbar-search-form" role="search">
 	    			<div class="input-group">
 	    			    <span class="input-group-addon"><i class="fa fa-search"></i></span>
@@ -14,7 +14,7 @@
 	            <table class="table table-striped">
 	                <thead>
 	                    <th>Mã</th>
-	                    <th>tên Lớp</th>                       
+	                    <th>Tên Lớp</th>                       
 						<th>Xem</th>						
 	                </thead>
 	                <tbody>
@@ -29,7 +29,7 @@
 	                </tbody>
 	            </table>
 				{{-- <div class="text-center">
-					{{ $subjects->appends(['search' => $search])->links() }}
+					{{ $grades->appends(['search' => $search])->links() }}
 				</div> --}}
 	        </div>
 	    </div>

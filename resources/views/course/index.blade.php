@@ -18,7 +18,6 @@
 	                <thead>
 	                    <th>Mã</th>
 	                    <th>Khóa</th>
-						
 						<th>Sửa</th>
 						{{-- <th>Xóa</th> --}}
 	                </thead>

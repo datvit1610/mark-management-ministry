@@ -32,7 +32,7 @@ class AuthenticateController extends Controller
                 $request->session()->put('id', $ministry->idMinistry);
                 $request->session()->put('nameMinistry', $ministry->nameMinistry);
                 $request->session()->put('role', $ministry->role);
-                return Redirect::route("course.index");
+                return Redirect::route("doshboard.index");
             }
         } catch (Exception $e) {
             return Redirect::route("login")->with('error', [

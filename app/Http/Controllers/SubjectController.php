@@ -17,7 +17,7 @@ class SubjectController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $subjects = Subject::where('nameSubject', 'like', "%$search%")->paginate(3);
+        $subjects = Subject::where('nameSubject', 'like', "%$search%")->paginate(5);
         return view('subject.index', [
             "subjects" => $subjects,
             "search" => $search,

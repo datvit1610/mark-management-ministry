@@ -32,7 +32,7 @@
                 <div class="card-content">
                     <div class="form-group">
                         <label>Pass word :</label>	 
-                        <input type="text" name="passWord" class="form-control datetimepicker" placeholder="Nhập số pass word"/>
+                        <input type="password" name="passWord" class="form-control datetimepicker" placeholder="Nhập số pass word"/>
                     </div>                   
                 </div>
 
@@ -74,7 +74,15 @@
                 </div>
                 
                 <div class="card-content">
-                <button type="submit" class="btn btn-fill btn-info">Thêm lớp</button>
+                    <div class="card-footer text-center">                                       
+                    @if (Session::exists('error'))
+                        <div class="alert alert-warning">
+                            {{ Session::get('error.message')}}
+                        </div>
+                    @endif
+                    <button type="submit" class="btn btn-fill btn-info">Thêm</button> 
+                </div>
+                {{-- <button type="submit" class="btn btn-fill btn-info">Thêm lớp</button> --}}
                 </div>
             </form>
     </div>

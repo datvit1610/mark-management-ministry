@@ -37,6 +37,8 @@ Route::middleware([CheckLogin::class])->group(function () {
     Route::resource('grade', GradeController::class);
     //profile
     Route::resource('profile', ProfileController::class);
+    //doshboard
+    Route::resource('doshboard', DoshboardController::class);
     //Điểm
     // Route::resource('mark', MarkController::class);
     Route::name('mark.')->group(function () {
@@ -64,7 +66,8 @@ Route::middleware([CheckLogin::class])->group(function () {
         Route::post('/add-by-excel-process', [StudentController::class, 'import'])->name('add-by-excel-process');
     });
 
-    Route::get('doshboard/index', [DoshboardController::class, 'doshboard'])->name('index');
+    // Route::get('doshboard/index', [DoshboardController::class, 'doshboard'])->name('index');
+
 });
 //
 
