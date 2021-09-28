@@ -41,11 +41,11 @@
                 </div>
             </div> --}}
             <form class="text-right">
-            <h6><span class="text-primary"> Qua môn: bạn {{$qua}} chiếm {{number_format( $qua/$all * 100 , 1 )}} %</span></h6>
+            <h6><span class="text-primary"> Qua môn: {{$qua}} bạn  chiếm {{number_format( $qua/$all * 100 , 1 )}} %</span></h6>
             
-            <h6><span class="text-warning"> Thi lại: bạn {{$thilai}} chiếm {{number_format( $thilai/$all * 100 , 1 )}} %</span></h6>
+            <h6><span class="text-warning"> Thi lại: {{$thilai}} bạn  chiếm {{number_format( $thilai/$all * 100 , 1 )}} %</span></h6>
             
-            <h6><span class="text-danger"> Học lại: bạn {{$hoclai}} chiếm {{number_format( $hoclai/$all * 100 , 1 )}} %</span></h6>
+            <h6><span class="text-danger"> Học lại: {{$hoclai}} bạn  chiếm {{number_format( $hoclai/$all * 100 , 1 )}} %</span></h6>
             </form>
                {{-- <form class="navbar-form navbar-left navbar-search-form" role="search">
 	    			<div class="input-group">
@@ -56,48 +56,48 @@
 	        <div class="card-content table-responsive table-full-width">
 	            <table class="table table-striped">
 	                <thead>
-                        <th>STT</th>
-	                    <th>Tên sinh viên</th>
-                        <th>Final 1</th>
-                        <th>Final 2</th>
-                        <th>Skill 1</th>
-                        <th>Skill 2</th>
-                        <th>Trạng thái</th>						
+                        <th class="text-center">STT</th>
+	                    <th class="text-center">Tên sinh viên</th>
+                        <th class="text-center">Final 1</th>
+                        <th class="text-center">Final 2</th>
+                        <th class="text-center">Skill 1</th>
+                        <th class="text-center">Skill 2</th>
+                        <th class="text-center">Trạng thái</th>						
 	                </thead>
 	                <tbody>
 	                    @foreach ($mark as $marks)
                             <tr>
-                                <td>{{$marks->idStudent}}</td>
-                            	<td>
-									{{$marks->lastName}} {{$marks->firstName}}</td>
-                             	<td>
+                                <th class="text-center">{{$marks->idStudent}}</th>
+                            	<th class="text-center">
+									{{$marks->lastName}} {{$marks->firstName}}</th>
+                             	<th class="text-center">
                                         @if ($marks->final1 == NULL)
                                         <span class='ti-na'></span>  
                                         @else
                                             {{ $marks->final1 }}  
                                         @endif
-                                        </td>
-                                        <td>@if ($marks->final2 == NULL)
+                                        </th>
+                                        <th class="text-center">@if ($marks->final2 == NULL)
                                             <span class='ti-na'></span>  
                                         @else
                                             {{ $marks->final2 }}  
                                         @endif
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th class="text-center">
                                             @if ($marks->skill1 == NULL)
                                             <span class='ti-na'></span>  
                                         @else
                                             {{ $marks->skill1 }}  
                                         @endif 
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th class="text-center">
                                             @if ($marks->skill2 == NULL)
                                             <span class='ti-na'></span>  
                                         @else
                                             {{ $marks->skill2 }}  
                                         @endif
-                            	</td>
-                                <td>    
+                            	</th>
+                                <th class="text-center">    
                                             {{-- Có cả 2 --}}
                                             @if ($marks->final == 1 && $marks->skill == 1)
 
@@ -117,10 +117,10 @@
                                                     <h6><span class="text-primary">Qua môn</span></h6>
 
                                                 @elseif ($marks->final1 < 5 && $marks->skill1 >= 5 && $marks->final2 < 5  && $marks->skill2 == NULL)
-                                                    <h6><span class="text-danger bg-danger">Thi lại</span></h6>
+                                                    <h6><span class="text-danger bg-danger">Học lại</span></h6>
                                                 
                                                 @elseif ($marks->final1 == NULL && $marks->skill1 >= 5 && $marks->final2 == NULL  && $marks->skill2 == NULL)
-                                                    <h6><span class="text-danger bg-danger">Thi lại</span></h6>
+                                                    <h6><span class="text-danger bg-danger">Học lại</span></h6>
 
                                                 @elseif ($marks->final1 >= 5 && $marks->skill1 < 5 && $marks->final2 == NULL && $marks->skill2 >= 5 )
                                                     <h6><span class="text-primary">Qua môn</span></h6>
@@ -129,13 +129,13 @@
                                                     <h6><span class="bg-warning text-warning">Thi lại</span></h6>
 
                                                 @elseif ($marks->final1 < 5 && $marks->skill1 < 5 && $marks->final2 >= 5 && $marks->skill2 < 5 )
-                                                    <h6><span class="text-danger bg-danger">Thi lại</span></h6>
+                                                    <h6><span class="text-danger bg-danger">Học lại</span></h6>
 
                                                 @elseif ($marks->final1 < 5 && $marks->skill1 < 5 && $marks->final2 >= 5 && $marks->skill2 >= 5 )
                                                     <h6><span class="text-primary">Qua môn</span></h6>
 
                                                 @elseif ($marks->final1 < 5 && $marks->skill1 < 5 && $marks->final2 < 5 && $marks->skill2 >=5  )
-                                                    <h6><span class="text-danger bg-danger">Thi lại</span></h6>
+                                                    <h6><span class="text-danger bg-danger">Học lại</span></h6>
 
                                                 @elseif ($marks->final1 < 5 && $marks->skill1 < 5 && $marks->final2 >=5 && $marks->skill2 == NULL )
                                                     <h6><span class="bg-warning text-warning">Thi lại</span></h6>
@@ -144,7 +144,7 @@
                                                 @if ($marks->final1 >=5 && $marks->final2 == NULL )
                                                     <h6><span class="text-primary">Qua môn</span></h6>
                                                 @elseif ($marks->final1 < 5 && $marks->final2 < 5 )
-                                                    <h6><span class="text-danger bg-danger">Thi lại</span></h6>
+                                                    <h6><span class="text-danger bg-danger">Học lại</span></h6>
                                                 @elseif ($marks->final1 < 5 && $marks->final2 >= 5 )
                                                     <h6><span class="text-primary">Qua môn</span></h6>
                                                 @elseif ($marks->final1 < 5 && $marks->final2 == NULL )
@@ -154,7 +154,7 @@
                                                 @if ($marks->skill1 >=5 && $marks->skill2 == NULL )
                                                     <h6><span class="text-primary">Qua môn</span></h6>
                                                 @elseif ($marks->skill1 < 5 && $marks->skill2 < 5 )
-                                                    <h6><span class="text-danger bg-danger">Thi lại</span></h6>
+                                                    <h6><span class="text-danger bg-danger">Học lại</span></h6>
                                                 @elseif ($marks->skill1 < 5 && $marks->skill2 >= 5 )
                                                     <h6><span class="text-primary">Qua môn</span></h6>
                                                 @elseif ($marks->skill1 < 5 && $marks->skill2 == NULL )
@@ -162,7 +162,7 @@
                                                 @endif
                                             @endif
                                                 
-                                        </td>								
+                                        </th>								
                             </tr> 
                         @endforeach                                       
 	                </tbody>

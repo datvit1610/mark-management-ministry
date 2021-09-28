@@ -16,7 +16,7 @@ class MinistryCotroller extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $ministrys = Ministry::where('nameMinistry', 'like', "%$search%")->paginate(3);
+        $ministrys = Ministry::where('nameMinistry', 'like', "%$search%")->orderBy('idMinistry', 'asc')->paginate(3);
         return view('ministry.index', [
             "ministrys" => $ministrys,
             "search" => $search,

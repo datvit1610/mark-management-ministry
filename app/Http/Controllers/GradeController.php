@@ -31,7 +31,7 @@ class GradeController extends Controller
                 'course.nameCourse',
                 'major.nameMajor'
             )
-            ->where('grade.nameGrade', 'like', "%$search%")
+            ->where('grade.nameGrade', 'like', "%$search%")->orderBy('idGrade', 'asc')
             ->paginate(3);
         // dd(DB::getQueryLog());
         return view('grade.index', [

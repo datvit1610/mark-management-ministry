@@ -11,35 +11,36 @@
                 <div class="card-content">
                     <div class="form-group">
                         <label>Họ :</label>	 
-                        <input type="text" name="lastName" class="form-control datetimepicker" placeholder="Nhập Họ"/>
+                        <input type="text" name="lastName" class="form-control datetimepicker" placeholder="Nhập Họ" required autofocus="autofocus"/>
                     </div>                   
                 </div>
 
                 <div class="card-content">
                     <div class="form-group">
                         <label>Tên :</label>	 
-                        <input type="text" name="firstName" class="form-control datetimepicker" placeholder="Nhập tên"/>
+                        <input type="text" name="firstName" class="form-control datetimepicker" placeholder="Nhập tên" required autofocus="autofocus"/>
                     </div>                   
                 </div>
 
                 <div class="card-content">
                     <div class="form-group">
                         <label>Email :</label>	 
-                        <input type="text" name="email" class="form-control datetimepicker" placeholder="Nhập email"/>
+                        <input type="text" name="email" class="form-control datetimepicker" placeholder="Nhập email" required autofocus="autofocus"/>
                     </div>                   
                 </div>
 
                 <div class="card-content">
                     <div class="form-group">
                         <label>Pass word :</label>	 
-                        <input type="password" name="passWord" class="form-control datetimepicker" placeholder="Nhập số pass word"/>
+                        <input type="password" name="passWord" class="form-control datetimepicker" placeholder="Nhập password" id="myInput" required autofocus="autofocus"/>
+                        <input type="checkbox" onclick="myFunction()">  Show Pass
                     </div>                   
                 </div>
 
                 <div class="card-content">
                     <div class="form-group">
                         <label>ngày sinh :</label>	 
-                        <input type="date" name="DoB" class="form-control datetimepicker" placeholder="Nhập ngày sinh"/>
+                        <input type="date" name="DoB" class="form-control datetimepicker" placeholder="Nhập ngày sinh" required autofocus="autofocus"/>
                     </div>                   
                 </div>
 
@@ -47,11 +48,11 @@
                     <div class="form-group">
                         <label>Giới tính :</label>	 
                         <div class="radio">
-							<input type="radio" name="gender" value="1">
+							<input type="radio" name="gender" value="1" required autofocus="autofocus">
 							<label>Nam</label>
 						</div>
                         <div class="radio">
-							<input type="radio" name="gender" value="1">
+							<input type="radio" name="gender" value="1" required autofocus="autofocus">
 							<label>Nữ</label>
 						</div>
                     </div>                   
@@ -66,7 +67,7 @@
 
                 <div class="card-content">
                     <label>Chọn Lớp:</label>
-                    <select class="selectpicker" data-style="btn btn-danger btn-block" title="Lớp" data-size="7" name="idGrade">
+                    <select class="selectpicker" data-style="btn btn-danger btn-block" title="Lớp" data-size="7" name="idGrade" required autofocus="autofocus">
                         @foreach ($lop as $grade)
                             <option value="{{$grade->idGrade}}">{{$grade->nameGrade}}</option>                                   
                         @endforeach                       

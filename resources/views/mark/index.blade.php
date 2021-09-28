@@ -26,52 +26,57 @@
                 <div class="card-content table-responsive table-full-width">
                     <table class="table table-striped">
                         <thead>
-                            <th>Tên sinh viên</th>
-                            <th>Lớp</th>
-                            <th>Tên môn học</th>
-                            <th>Final 1</th>
-                            <th>Final 2</th>
-                            <th>Skill 1</th>
-                            <th>Skill 2</th>
-                            <th>Trạng thái</th>
-                            <th>Update</th>
+                            <th class="text-center">STT</th>
+                            <th >Tên sinh viên</th>
+                            <th class="text-center">Lớp</th>
+                            <th class="text-center">Tên môn học</th>
+                            <th class="text-center">Final 1</th>
+                            <th class="text-center">Final 2</th>
+                            <th class="text-center">Skill 1</th>
+                            <th class="text-center">Skill 2</th>
+                            <th class="text-center">Trạng thái</th>
+                            <th class="text-center">Update</th>
                         </thead>
+                        @php
+                            $index = 0;
+                        @endphp
                         @foreach ($marks as $mark )
                         <tbody> 
-                                <tr>    
-                                    <td>{{$mark->lastName}} {{$mark->firstName}}</td>
-                                        <td>{{$mark->nameGrade}}</td>
-                                        <td>{{$mark->nameSubject}}</td> 
+                                <tr >   
+                                    <th class="text-center">{{$index+=1}}</th> 
+                                    <th>{{$mark->lastName}} {{$mark->firstName}}</th>
+                                        <th class="text-center">{{$mark->nameGrade}}</th>
+                                        <th class="text-center">{{$mark->nameSubject}}</th> 
                                         
-                                        <td>
+                                        <th class="text-center">
                                             @if ($mark->final1 == NULL)
                                             <span class='ti-na'></span>  
                                         @else
                                             {{ $mark->final1 }}  
                                         @endif
-                                        </td>
-                                        <td>@if ($mark->final2 == NULL)
+                                        </th>
+                                        <th class="text-center">@if ($mark->final2 == NULL)
                                             <span class='ti-na'></span>  
                                         @else
                                             {{ $mark->final2 }}  
                                         @endif
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th class="text-center">
                                             @if ($mark->skill1 == NULL)
                                             <span class='ti-na'></span>  
                                         @else
                                             {{ $mark->skill1 }}  
                                         @endif 
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th class="text-center">
                                             @if ($mark->skill2 == NULL)
                                             <span class='ti-na'></span>  
                                         @else
                                             {{ $mark->skill2 }}  
                                         @endif
-                                        </td>
+                                        </th>
                                         
-                                        <td>    
+                                        <th class="text-center">    
                                             {{-- Có cả 2 --}}
                                             @if ($mark->final == 1 && $mark->skill == 1)
 
@@ -139,11 +144,11 @@
                                                 @endif
                                             @endif
                                                 
-                                        </td>
-                                        <td>
+                                        </th>
+                                        <th class="text-center">
                                             <a class="btn btn-warning ti-settings" href="{{ route('mark.edit',
                                             ['idStudent'=>$mark->idStudent, 'idSubject'=>$mark->idSubject])}}"></a
-                                        ></td>
+                                        ></th>
                                         
                                 </tr> 
 

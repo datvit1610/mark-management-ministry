@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="{{ asset ('assets') }}/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{ asset ('assets') }}/img/favicon.png">
+	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Paper Dashboard PRO by Creative Tim</title>
@@ -26,6 +27,7 @@
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+	
     <link href="{{ asset ('assets') }}/css/themify-icons.css" rel="stylesheet">
 </head>
 
@@ -52,7 +54,16 @@
              
 	</div>
 </body>
-
+	<script>
+		function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+	</script>
 	<!--   Core JS Files. Extra: TouchPunch for touch library inside jquery-ui.min.js   -->
 	<script src="{{ asset ('assets') }}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 	<script src="{{ asset ('assets') }}/js/jquery-ui.min.js" type="text/javascript"></script>

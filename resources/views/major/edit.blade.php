@@ -14,7 +14,15 @@
                     <label>Sửa ngành</label>
                     <input type="text" name="name" class="form-control" value="{{ $major->nameMajor}}">
                 </div>
-                <button type="submit" class="btn btn-fill btn-info">Sửa</button>
+                <div class="card-footer text-center">                                       
+                    @if (Session::exists('error'))
+                        <div class="alert alert-warning">
+                            {{ Session::get('error.message')}}
+                        </div>
+                    @endif
+                    <button type="submit" class="btn btn-fill btn-info">Sửa</button> 
+                </div>
+                
             </div>
 	    </form>
 	</div>

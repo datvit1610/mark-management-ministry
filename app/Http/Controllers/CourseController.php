@@ -19,7 +19,7 @@ class CourseController extends Controller
     {
         $search = $request->get('search');
         //$courses = Course::orderBy('idCourse', 'asc')->get();
-        $courses = Course::where('nameCourse', 'like', "%$search%")->paginate(3);
+        $courses = Course::where('nameCourse', 'like', "%$search%")->orderBy('idCourse', 'asc')->paginate(3);
         return view('course.index', [
             "courses" => $courses,
             "search" => $search

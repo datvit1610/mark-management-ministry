@@ -12,40 +12,41 @@
             <div class="card-content">
                 <div class="form-group">
                     <label>Họ</label>
-                    <input type="text" name="lastName" class="form-control" value="{{$student->lastName}}">
+                    <input type="text" name="lastName" class="form-control" value="{{$student->lastName}}" required autofocus="autofocus">
                 </div>
                 
                  <div class="form-group">
                     <label>Tên</label>
-                    <input type="text" name="firstName" class="form-control" value="{{$student->firstName}}">
+                    <input type="text" name="firstName" class="form-control" value="{{$student->firstName}}" required autofocus="autofocus">
                 </div>
                  <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="email" class="form-control" value="{{$student->email}}">
+                    <input type="text" name="email" class="form-control" value="{{$student->email}}" required autofocus="autofocus">
                 </div>
                  <div class="form-group">
                     <label>Password</label>
-                    <input type="password" name="password" class="form-control" value="{{$student->passWord}}" readonly>
+                    <input type="password" name="passWord" class="form-control" value="{{$student->passWord}}" id="myInput" required autofocus="autofocus">
+                    <input type="checkbox" onclick="myFunction()">  Show Pass
                 </div>
                  <div class="form-group">
                     <label>Ngày sinh</label>
-                    <input type="date" name="DoB" class="form-control" value="{{$student->DoB}}">
+                    <input type="date" name="DoB" class="form-control" value="{{$student->DoB}}" required autofocus="autofocus">
                 </div>
                 <div class="form-group">
                     <label>giới tính</label>
                         <div class="radio">
-							<input type="radio" name="gender" value="1" <?= $student->gender == 1 ? "checked" : "" ?>>
+							<input type="radio" name="gender" value="1" <?= $student->gender == 1 ? "checked" : "" ?> required autofocus="autofocus">
 							<label>Nam</label>
 						</div>
                         <div class="radio">
-							<input type="radio" name="gender" value="0" <?= $student->gender == 0 ? "checked" : "" ?>>
+							<input type="radio" name="gender" value="0" <?= $student->gender == 0 ? "checked" : "" ?> required autofocus="autofocus">
 							<label>Nữ</label>
                         </div>
                 </div>
                 
                 <div class="card-content">
                     <label>Chọn Lớp:</label>
-                    <select class="selectpicker" data-style="btn btn-danger btn-block" title="Lớp"  name="idGrade">
+                    <select class="selectpicker" data-style="btn btn-danger btn-block" title="Lớp"  name="idGrade" required autofocus="autofocus">
                         @foreach ($lop as $students)
                             <option value="{{$students->idGrade}}">{{$students->nameGrade}}
                                 

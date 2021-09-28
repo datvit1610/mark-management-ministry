@@ -37,7 +37,7 @@
 	        <div class="card-content table-responsive table-full-width">
 	            <table class="table table-striped">
 	                <thead>
-	                    
+	                    <th>STT</th>
 	                    <th>Tên sinh viên</th>
 						<th>Email</th>
 						<th>Ngày sinh</th>
@@ -46,8 +46,12 @@
 						<th>Sửa</th>
 	                </thead>
 	                <tbody>
+						@php
+							$index = 0;
+						@endphp
 	                    @foreach ($students as $student)
-                            <tr>                                
+                            <tr>   
+								<td>{{$index+=1}}</td>                             
 								<td>{{$student->FullName}}</td>
 								<td>{{$student->email}}</td>
 								<td>{{$student->DoB}}</td> 
