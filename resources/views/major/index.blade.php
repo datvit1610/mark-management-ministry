@@ -24,9 +24,12 @@
 						
 	                </thead>
 	                <tbody>
+						@php
+							 $index = 0;
+						@endphp
 	                    @foreach ($majors as $major)
                             <tr>
-                                <td>{{$major->idMajor}}</td> 
+                                <td>{{$index+=1}}</td> 
                                 <td>{{$major->nameMajor}}</td> 
 								{{-- <td><a class="btn btn-facebook ti-eye" href="{{ route('grade.index',$major->idMajor) }}"></a></td> --}}
 								<td><a class="btn btn-warning ti-settings" href="{{ route('major.edit',['major' =>$major->idMajor]) }}"></a></td>

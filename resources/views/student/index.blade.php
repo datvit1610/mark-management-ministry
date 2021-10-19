@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
-	<div class="text-right">
-		<a href="{{ route('student.create') }}" class="btn btn-info btn-fill btn-wd">Thêm sinh viên</a>
-	</div>
+	
 			<br>
     <div class="card">
 	    <div class="card-header">
@@ -23,6 +21,9 @@
 				   </select>
 				   <button class="btn btn-xs btn-fill">Chọn</button>
 			   </form>
+			   <div class="text-right">
+					<a href="{{ route('student.create') }}" class="btn btn-info btn-fill btn-wd">Thêm sinh viên</a>
+				</div><br>
 			   <div class="text-right">
 				<a href="{{ route('student.add-by-excel') }}" class="btn btn-info btn-fill btn-wd">Thêm sinh viên bằng excel</a>
 			</div>

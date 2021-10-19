@@ -46,42 +46,42 @@
 
 					<li>
 						<a href="{{ route ('major.index')}}">
-							<i class="ti-package"></i>
+							<i class="ti-clipboard"></i>
 							<span class="sidebar-normal">Chuyên ngành</span>
 						</a>
 					</li>
 					
 	                <li>
 						<a href="{{ route('grade.index') }}">
-	                        <i class="ti-view-list-alt"></i>
+	                        <i class="ti-clipboard"></i>
 	                        <span class="sidebar-normal">Quản lý lớp</span>
 	                    </a>
 					</li>
 
 					<li>
 	                    <a href="{{ route ('student.index') }}">
-							<i class="ti-package"></i>
+							<i class="ti-clipboard"></i>
 							<span class="sidebar-normal">Quản lý sinh viên</span>
 						</a>
 	                </li>
 
 					<li>
 						<a href="{{ route ('subject.index') }}">
-							<i class="ti-package"></i>
-							<span class="sidebar-normal">Môn học</span>
+							<i class="ti-clipboard"></i>
+							<span class="sidebar-normal">Quản lý môn học</span>
 						</a>
 					</li>
 
 					<li>
 	                    <a href="{{ route ('mark.index') }}">
-							<i class="ti-package"></i>
+							<i class="ti-clipboard"></i>
 							<span class="sidebar-normal">Quản lý điểm</span>
 						</a>
 	                </li>
 
 					<li>
 	                    <a href="{{ route ('mark.statisGrade') }}">
-							<i class="ti-package"></i>
+							<i class="ti-server"></i>
 							<span class="sidebar-normal">Thống kê</span>
 						</a>
 	                </li>

@@ -32,7 +32,7 @@
 	                                        <div class="form-group">
 	                                            <label class="col-sm-2 control-label">Password</label>
 	                                            <div class="col-sm-10">
-	                                                <input type="password" name="passWord" class="form-control" value="{{$profile->passWord}}" id="myInput">
+	                                                <input type="password" name="password" class="form-control" value="{{$profile->passWord}}" id="myInput">
                     								<input type="checkbox" onclick="myFunction()">  Show Pass
 	                                            </div>
 	                                        </div>
