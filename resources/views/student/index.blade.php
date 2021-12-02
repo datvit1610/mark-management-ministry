@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-	
+
 			<br>
     <div class="card">
 	    <div class="card-header">
@@ -30,9 +30,9 @@
 			   <h4 class="card-title">
 				    @foreach ($grades as $grade)
 						@if ($grade->idGrade == $idGrade)
-				   			Danh sách sinh viên lớp {{$grade->nameGrade}}			   			
-						@else									  
-			   			@endif 
+				   			Danh sách sinh viên lớp {{$grade->nameGrade}}
+						@else
+			   			@endif
 					@endforeach
 			</h4><br>
 	        <div class="card-content table-responsive table-full-width">
@@ -51,13 +51,13 @@
 							$index = 0;
 						@endphp
 	                    @foreach ($students as $student)
-                            <tr>   
-								<td>{{$index+=1}}</td>                             
+                            <tr>
+								<td>{{$index+=1}}</td>
 								<td>{{$student->FullName}}</td>
 								<td>{{$student->email}}</td>
-								<td>{{$student->DoB}}</td> 
-                                <td>{{$student->GenderName}}</td> 
-								 
+								<td>{{$student->DoB}}</td>
+                                <td>{{$student->GenderName}}</td>
+
 								{{-- <td>
 									<a class="btn btn-facebook ti-eye" href="{{ route('mark.index',
 									['student' => $student->idStudent]) }}"></a>
@@ -66,9 +66,9 @@
 								<td>
 									<a class="btn btn-warning ti-settings" href="{{ route('student.edit',$student->idStudent) }}"></a>
 								</td>
-								
-                            </tr> 
-                        @endforeach                                       
+
+                            </tr>
+                        @endforeach
 	                </tbody>
 	            </table>
 				{{-- <div class="text-center">
@@ -76,5 +76,5 @@
 				</div> --}}
 	        </div>
 	    </div>
-    
+
 @endsection
