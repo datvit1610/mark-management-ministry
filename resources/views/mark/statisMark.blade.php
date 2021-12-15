@@ -25,11 +25,13 @@
             @foreach ($mark as $s)
                 @if (($s->final1 >= 5 || $s->final2 >=5) && ($s->skill1 >=5 || $s->skill2 >= 5))
                     @php $qua++ @endphp
+                    
                 @elseif(((($s->final1 < 5 || $s->final1 == null) && $s->final2 == null) || 
                 (($s->skill1 < 5 || $s->skill1 == null) && $s->skill2 == null)) && 
                 ((($s->final2)) == 0 || 
                 (($s->skill2)) == 0))
                     @php $thilai++ @endphp
+                    
                 @elseif($all - $qua - $thilai) 
                     @php $hoclai++ @endphp
                 @endif
@@ -65,9 +67,12 @@
                         <th class="text-center">Trạng thái</th>						
 	                </thead>
 	                <tbody>
+                        @php
+							$index = 0;
+						@endphp
 	                    @foreach ($mark as $marks)
                             <tr>
-                                <th class="text-center">{{$marks->idStudent}}</th>
+                                <th class="text-center">{{$index+=1}}</th>
                             	<th class="text-center">
 									{{$marks->lastName}} {{$marks->firstName}}</th>
                              	<th class="text-center">
